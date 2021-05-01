@@ -57,10 +57,10 @@ public class CharacterController2D : MonoBehaviour
     void Update()
     {
         // Movement controls
-        if (!disableInputs && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        if (!disableInputs && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.D)))
         {
-            moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
-            if (Input.GetKey(KeyCode.A))
+            moveDirection = (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.LeftArrow)) ? -1 : 1;
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.LeftArrow))
             {
                 speed = -maxSpeed;
                 // if (speed > -1f)
@@ -68,7 +68,7 @@ public class CharacterController2D : MonoBehaviour
                 //     speed = speed - 0.01f;
                 // }
             }
-            if (Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 speed = maxSpeed;
                 // if (speed < 1f)
@@ -110,7 +110,7 @@ public class CharacterController2D : MonoBehaviour
         //Debug.Log(speed);
 
         // Jumping
-        bool wantsToJump = !disableInputs && Input.GetKey(KeyCode.W);
+        bool wantsToJump = !disableInputs && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow));
         if (r2d.velocity.y < 0)
             r2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         else if (r2d.velocity.y > 0 && !wantsToJump)
@@ -135,7 +135,7 @@ public class CharacterController2D : MonoBehaviour
 
     void UpdateJumpPressed()
     {
-        bool jump = !disableInputs && Input.GetKeyDown(KeyCode.W);
+        bool jump = !disableInputs && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow));
         if (jump)
             lastJumpPressedFrame = 0;
         
@@ -158,6 +158,8 @@ public class CharacterController2D : MonoBehaviour
         {
             for (int i = 0; i < colliders.Length; i++)
             {
+                if (colliders[i].isTrigger)
+                    continue;
                 if (colliders[i] != mainCollider)
                 {
                     isGrounded = true;
