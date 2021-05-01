@@ -70,12 +70,10 @@ public class FireGame : MonoBehaviour
 
         waterDropPos.x = Mathf.Clamp(waterDropPos.x, 0, 3);
         waterDropPos.y = Mathf.Clamp(waterDropPos.y, 0, 3);
-        Debug.Log(waterDropPos);
 
         waterDrop.transform.localPosition = GirdPosToWorld(waterDropPos);
         if (fires.TryGetValue(waterDropPos, out var go))
         {
-            Debug.Log("Destroy: " + go);
             Object.Destroy(go);
             fires.Remove(waterDropPos);
         }

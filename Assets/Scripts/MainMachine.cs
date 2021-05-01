@@ -70,7 +70,6 @@ public class MainMachine : MonoBehaviour
 
     public void PlayerInteraction()
     {
-        Debug.Log("case test");
         switch (currentState)
         {
             case State.Broken :
@@ -97,7 +96,6 @@ public class MainMachine : MonoBehaviour
         {
             workingMiniGame.SetActive(true);
             interactionKey.SetActive(false);
-            Debug.Log("working game");
             character.disableInputs = true;
         }
     }
@@ -106,7 +104,6 @@ public class MainMachine : MonoBehaviour
     {
         brokenMiniGame.SetActive(true);
         interactionKey.SetActive(false);
-        Debug.Log("broken game");
         character.disableInputs = true;
     }
 
@@ -116,14 +113,12 @@ public class MainMachine : MonoBehaviour
         {
             fireMiniGame.SetActive(true);
             interactionKey?.SetActive(false);
-            Debug.Log("fire game");
             character.disableInputs = true;
         }
     }
 
     public void CloseWorkingGame()
     {
-        Debug.Log("close working game");
         workingMiniGame.SetActive(false);
         character.disableInputs = false;
     }
@@ -131,14 +126,12 @@ public class MainMachine : MonoBehaviour
     public void CloseBrokenGame()
     {
         brokenMiniGame.SetActive(false);
-        Debug.Log("close broken game");
         character.disableInputs = false;
     }
 
     public void CloseFireGame()
     {
         fireMiniGame.SetActive(false);
-        Debug.Log("close fire game");
         character.disableInputs = false;
     }
 
