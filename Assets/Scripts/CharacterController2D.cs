@@ -31,6 +31,9 @@ public class CharacterController2D : MonoBehaviour
     public float lowJumpMultiplier = 2f;
     public int jumpFrameDetectionCount = 20;
 
+    [System.NonSerialized]
+    internal bool disableInputs = false;
+
     // Use this for initialization
     void Start()
     {
@@ -52,7 +55,7 @@ public class CharacterController2D : MonoBehaviour
     void Update()
     {
         // Movement controls
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        if (!disableInputs && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
             moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
             if (Input.GetKey(KeyCode.A))
@@ -105,7 +108,7 @@ public class CharacterController2D : MonoBehaviour
         //Debug.Log(speed);
 
         // Jumping
-        bool wantsToJump = Input.GetKey(KeyCode.W);
+        bool wantsToJump = !disableInputs && Input.GetKey(KeyCode.W);
         if (r2d.velocity.y < 0)
             r2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         else if (r2d.velocity.y > 0 && !wantsToJump)
@@ -126,7 +129,7 @@ public class CharacterController2D : MonoBehaviour
 
     void UpdateJumpPressed()
     {
-        bool jump = Input.GetKeyDown(KeyCode.W);
+        bool jump = !disableInputs && Input.GetKeyDown(KeyCode.W);
         if (jump)
             lastJumpPressedFrame = 0;
         
@@ -158,7 +161,6 @@ public class CharacterController2D : MonoBehaviour
         }
 
         // Apply movement velocity
-        Debug.Log(speed);
         r2d.velocity = new Vector2(speed, r2d.velocity.y);
 
         // Simple debug
