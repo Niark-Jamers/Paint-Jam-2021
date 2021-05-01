@@ -24,11 +24,13 @@ Shader "Unlit/ColorToAlphaUnlit"
                 struct appdata_t {
                     float4 vertex : POSITION;
                     float2 texcoord : TEXCOORD0;
+                    float4 color : COLOR;
                 };
     
                 struct v2f {
                     float4 vertex : SV_POSITION;
                     half2 texcoord : TEXCOORD0;
+                    float4 color : COLOR;
                     UNITY_FOG_COORDS(1)
                 };
     
@@ -42,6 +44,7 @@ Shader "Unlit/ColorToAlphaUnlit"
                     v2f o;
                     o.vertex = UnityObjectToClipPos(v.vertex);
                     o.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
+                    o.color = v.color;
                     return o;
                 }
 
@@ -51,7 +54,7 @@ Shader "Unlit/ColorToAlphaUnlit"
 
                     if (all(length(col.rgb - _ColorToAlpha.rgb) < 0.04))
                         clip(-1);
-                    return col;
+                    return col * i.color;
                 }
             ENDCG
         }

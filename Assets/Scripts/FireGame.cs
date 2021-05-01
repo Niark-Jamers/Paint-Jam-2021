@@ -6,6 +6,9 @@ public class FireGame : MonoBehaviour
 {
     public MainMachine machine;
 
+    public AudioClip waterMove;
+    public AudioClip extinguish;
+
     public GameObject fire;
     public GameObject waterDrop;
 
@@ -57,15 +60,18 @@ public class FireGame : MonoBehaviour
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
+        bool change = false;
         if (Mathf.Abs(h) > 0.1f && Time.time - hTimeout > timeoutSeconds)
         {
             waterDropPos.x += (int)Mathf.Sign(h);
             hTimeout = Time.time;
+            change = true;
         }
         if (Mathf.Abs(v) > 0.1f && Time.time - vTimeout > timeoutSeconds)
         {
             waterDropPos.y += (int)Mathf.Sign(v);
             vTimeout = Time.time;
+            change = true;
         }
 
         waterDropPos.x = Mathf.Clamp(waterDropPos.x, 0, 3);
@@ -74,9 +80,13 @@ public class FireGame : MonoBehaviour
         waterDrop.transform.localPosition = GirdPosToWorld(waterDropPos);
         if (fires.TryGetValue(waterDropPos, out var go))
         {
+            AudioManager.instance.PlaySFX(extinguish);
             Object.Destroy(go);
             fires.Remove(waterDropPos);
         }
+        else if (change)
+            AudioManager.instance.PlaySFX(waterMove);
+
         if (fires.Count == 0)
         {
             machine.FireStop();

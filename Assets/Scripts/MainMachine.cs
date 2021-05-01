@@ -9,6 +9,14 @@ public class MainMachine : MonoBehaviour
 
     public GameObject interactionKey;
 
+    [Header("Colors")]
+    public Color fireColor;
+    public Color brokenColor;
+
+    [Header("Sprites")]
+    public Sprite brokenSprite;
+    Sprite workingSprite;
+
     [Header("Minigames")]
     public GameObject workingMiniGame;
     public GameObject brokenMiniGame;
@@ -35,13 +43,14 @@ public class MainMachine : MonoBehaviour
         interactionKey.SetActive(false);
         sr = this.GetComponent<SpriteRenderer>();
         character = FindObjectOfType<CharacterController2D>();
+        workingSprite = sr.sprite;
     }
 
     public void BrokenStart()
     {
         currentState = State.Broken;
-        sr.color = Color.blue;
-        // change sprite;
+        sr.color = brokenColor;
+        sr.sprite = brokenSprite;
     }
 
     public void BrokenStop()
@@ -50,13 +59,14 @@ public class MainMachine : MonoBehaviour
         currentState = State.Working;
         interactionKey.SetActive(false);
         sr.color = Color.white;
+        sr.sprite = workingSprite;
     }
 
     public void FireStart()
     {
         currentState = State.Fire;
         firePrefab.SetActive(true);
-        sr.color = Color.red;
+        sr.color = fireColor;
     }
 
     public void FireStop()

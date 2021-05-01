@@ -48,3 +48,6 @@ TagManager:
   - name: MiniGame
     uniqueID: 3710661825
     locked: 0
+  - name: UI
+    uniqueID: 3776641685
+    locked: 0
