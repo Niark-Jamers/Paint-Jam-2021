@@ -7,6 +7,17 @@ public class MainMachine : MonoBehaviour
     [HideInInspector] public enum State {Working, Broken, Fire};
     public State currentState = State.Working;
 
+    public GameObject interactionKey;
+
+    [Header("Minigames")]
+    public GameObject workingMiniGame;
+    public GameObject brokenMiniGame;
+    public GameObject fireMiniGame;
+
+    [Header("Other")]
+    public GameObject firePrefab;
+
+    CharacterController2D character;
 
     public float badtimer = 1f;
     float trueTimer = 0f;
@@ -21,7 +32,9 @@ public class MainMachine : MonoBehaviour
 
     void Start()
     {
+        interactionKey.SetActive(false);
         sr = this.GetComponent<SpriteRenderer>();
+        character = FindObjectOfType<CharacterController2D>();
     }
 
     public void BrokenStart()
@@ -35,12 +48,14 @@ public class MainMachine : MonoBehaviour
     {
         brokenBar = 0;
         currentState = State.Working;
+        interactionKey.SetActive(false);
         sr.color = Color.white;
     }
 
     public void FireStart()
     {
         currentState = State.Fire;
+        firePrefab.SetActive(true);
         sr.color = Color.red;
     }
 
@@ -48,6 +63,8 @@ public class MainMachine : MonoBehaviour
     {
         fireBar = 0;
         currentState = State.Working;
+        interactionKey.SetActive(false);
+        firePrefab.SetActive(false);
         sr.color = Color.white;
     }
 
@@ -58,37 +75,69 @@ public class MainMachine : MonoBehaviour
         {
             case State.Broken :
             {
-                MachineBrokenGame();
+                StartBrokenGame();
                 break;
             }
             case State.Fire:
             {
-                MachineFireGame();
+                StartFireGame();
                 break;
             }
             default:
             {
-                MachineWorkingGame();
+                StartWorkingGame();
                 break;
             }
         }
     }
 
-    public virtual void MachineWorkingGame()
+    public void StartWorkingGame()
     {
-        Debug.Log("working game");
+        if (workingMiniGame)
+        {
+            workingMiniGame.SetActive(true);
+            interactionKey.SetActive(false);
+            Debug.Log("working game");
+            character.disableInputs = true;
+        }
     }
 
-    public virtual void MachineBrokenGame()
+    public void StartBrokenGame()
     {
+        brokenMiniGame.SetActive(true);
+        interactionKey.SetActive(false);
         Debug.Log("broken game");
-        BrokenStop();
+        character.disableInputs = true;
     }
 
-    public virtual void MachineFireGame()
+    public void StartFireGame()
     {
-        Debug.Log("fire game");
-        FireStop();
+        if (fireMiniGame)
+        {
+            fireMiniGame.SetActive(true);
+            interactionKey?.SetActive(false);
+            Debug.Log("fire game");
+        }
+    }
+
+    public void CloseWorkingGame()
+    {
+        Debug.Log("close working game");
+        workingMiniGame.SetActive(false);
+        character.disableInputs = false;
+    }
+
+    public void CloseBrokenGame()
+    {
+        brokenMiniGame.SetActive(false);
+        Debug.Log("close broken game");
+        character.disableInputs = false;
+    }
+
+    public void CloseFireGame()
+    {
+        fireMiniGame.SetActive(false);
+        Debug.Log("close fire game");
     }
 
     void Update()
@@ -96,7 +145,7 @@ public class MainMachine : MonoBehaviour
         trueTimer += Time.deltaTime;
         if (trueTimer >= badtimer)
         {
-            if (currentState == State.Working)
+            if (currentState == State.Working && (workingMiniGame == null || !workingMiniGame.activeSelf))
             {
                 brokenBar += brokenStep;
                 fireBar += fireStep;
@@ -109,5 +158,23 @@ public class MainMachine : MonoBehaviour
             BrokenStart();
     }
 
+    void CloseGame()
+    {
+        interactionKey.SetActive(false);
+    }
 
+    private void OnTriggerStay2D(Collider2D other) {
+        if (other.gameObject.tag == "Player" && currentState != State.Working && !interactionKey.activeSelf && (!brokenMiniGame.activeSelf && !fireMiniGame.activeSelf))
+        {
+            interactionKey.SetActive(true);
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.gameObject.tag == "Player")
+        {
+            CloseGame();
+        }
+    }
 }
