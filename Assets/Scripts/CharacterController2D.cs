@@ -54,11 +54,8 @@ public class CharacterController2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (disableInputs)
-            return;
-
         // Movement controls
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        if (!disableInputs && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
             moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
             if (Input.GetKey(KeyCode.A))
@@ -111,7 +108,7 @@ public class CharacterController2D : MonoBehaviour
         //Debug.Log(speed);
 
         // Jumping
-        bool wantsToJump = Input.GetKey(KeyCode.W);
+        bool wantsToJump = !disableInputs && Input.GetKey(KeyCode.W);
         if (r2d.velocity.y < 0)
             r2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         else if (r2d.velocity.y > 0 && !wantsToJump)
@@ -132,7 +129,7 @@ public class CharacterController2D : MonoBehaviour
 
     void UpdateJumpPressed()
     {
-        bool jump = Input.GetKeyDown(KeyCode.W);
+        bool jump = !disableInputs && Input.GetKeyDown(KeyCode.W);
         if (jump)
             lastJumpPressedFrame = 0;
         
@@ -144,8 +141,6 @@ public class CharacterController2D : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (disableInputs)
-            return;
         Bounds colliderBounds = mainCollider.bounds;
         float colliderRadius = mainCollider.size.x * 0.4f * Mathf.Abs(transform.localScale.x);
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, colliderRadius * 0.9f, 0);
