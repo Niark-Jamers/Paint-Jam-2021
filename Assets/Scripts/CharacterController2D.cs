@@ -10,6 +10,8 @@ public class CharacterController2D : MonoBehaviour
     // Move player in 2D space
     public float maxSpeed = 3.4f;
     public float gravityScale = 1.5f;
+    public float acceleration = 0.125f;
+    public float patination = 0.02f;
     public Camera mainCamera;
 
     float speed = 0;
