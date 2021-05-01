@@ -93,7 +93,7 @@ public class CharacterController2D : MonoBehaviour
                 speed = speed + 0.025f;
             }
         }
-        Debug.Log(speed);
+        //Debug.Log(speed);
 
         // Jumping
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
