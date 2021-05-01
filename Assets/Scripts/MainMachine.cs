@@ -9,9 +9,15 @@ public class MainMachine : MonoBehaviour
 
     public GameObject interactionKey;
 
+    [Header("Minigames")]
     public GameObject workingMiniGame;
     public GameObject brokenMiniGame;
     public GameObject fireMiniGame;
+
+    [Header("Other")]
+    public GameObject firePrefab;
+
+    CharacterController2D character;
 
     public float badtimer = 1f;
     float trueTimer = 0f;
@@ -28,6 +34,7 @@ public class MainMachine : MonoBehaviour
     {
         interactionKey.SetActive(false);
         sr = this.GetComponent<SpriteRenderer>();
+        character = FindObjectOfType<CharacterController2D>();
     }
 
     public void BrokenStart()
@@ -48,6 +55,7 @@ public class MainMachine : MonoBehaviour
     public void FireStart()
     {
         currentState = State.Fire;
+        firePrefab.SetActive(true);
         sr.color = Color.red;
     }
 
@@ -56,6 +64,7 @@ public class MainMachine : MonoBehaviour
         fireBar = 0;
         currentState = State.Working;
         interactionKey.SetActive(false);
+        firePrefab.SetActive(false);
         sr.color = Color.white;
     }
 
@@ -85,9 +94,12 @@ public class MainMachine : MonoBehaviour
     public void StartWorkingGame()
     {
         if (workingMiniGame)
+        {
             workingMiniGame.SetActive(true);
-        interactionKey.SetActive(false);
-        Debug.Log("working game");
+            interactionKey.SetActive(false);
+            Debug.Log("working game");
+            character.disableInputs = true;
+        }
     }
 
     public void StartBrokenGame()
@@ -95,25 +107,31 @@ public class MainMachine : MonoBehaviour
         brokenMiniGame.SetActive(true);
         interactionKey.SetActive(false);
         Debug.Log("broken game");
+        character.disableInputs = true;
     }
 
     public void StartFireGame()
     {
-        fireMiniGame.SetActive(true);
-        interactionKey.SetActive(false);
-        Debug.Log("fire game");
+        if (fireMiniGame)
+        {
+            fireMiniGame.SetActive(true);
+            interactionKey?.SetActive(false);
+            Debug.Log("fire game");
+        }
     }
 
     public void CloseWorkingGame()
     {
         Debug.Log("close working game");
         workingMiniGame.SetActive(false);
+        character.disableInputs = false;
     }
 
     public void CloseBrokenGame()
     {
         brokenMiniGame.SetActive(false);
         Debug.Log("close broken game");
+        character.disableInputs = false;
     }
 
     public void CloseFireGame()
@@ -127,7 +145,7 @@ public class MainMachine : MonoBehaviour
         trueTimer += Time.deltaTime;
         if (trueTimer >= badtimer)
         {
-            if (currentState == State.Working)
+            if (currentState == State.Working && (workingMiniGame == null || !workingMiniGame.activeSelf))
             {
                 brokenBar += brokenStep;
                 fireBar += fireStep;
