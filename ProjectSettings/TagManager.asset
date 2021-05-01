@@ -45,3 +45,6 @@ TagManager:
   - name: Fire
     uniqueID: 2903126381
     locked: 0
+  - name: MiniGame
+    uniqueID: 3710661825
+    locked: 0

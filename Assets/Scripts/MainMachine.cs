@@ -117,6 +117,7 @@ public class MainMachine : MonoBehaviour
             fireMiniGame.SetActive(true);
             interactionKey?.SetActive(false);
             Debug.Log("fire game");
+            character.disableInputs = true;
         }
     }
 
@@ -138,6 +139,7 @@ public class MainMachine : MonoBehaviour
     {
         fireMiniGame.SetActive(false);
         Debug.Log("close fire game");
+        character.disableInputs = false;
     }
 
     void Update()
