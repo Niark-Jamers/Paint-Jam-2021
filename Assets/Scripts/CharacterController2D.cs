@@ -11,6 +11,8 @@ public class CharacterController2D : MonoBehaviour
     public float maxSpeed = 3.4f;
     public float jumpHeight = 6.5f;
     public float gravityScale = 1.5f;
+    public float acceleration = 0.125f;
+    public float patination = 0.02f;
     public Camera mainCamera;
 
     float speed = 0;
@@ -46,10 +48,24 @@ public class CharacterController2D : MonoBehaviour
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && (isGrounded || Mathf.Abs(r2d.velocity.x) > 0.01f))
         {
             moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
+            if (Input.GetKey(KeyCode.A))
+            {
+                if (speed > -1f)
+                {
+                    speed = speed - acceleration;
+                }
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                if (speed < 1f)
+                {
+                    speed = speed + acceleration;
+                }
+            }
         }
         else
         {
-            if (isGrounded || r2d.velocity.magnitude < 0.01f)
+            if (isGrounded || r2d.velocity.magnitude < 0.1f)
             {
                 moveDirection = 0;
             }
@@ -60,7 +76,6 @@ public class CharacterController2D : MonoBehaviour
         {
             if (moveDirection > 0 && !facingRight)
             {
-                speed = speed + 0.10f;
                 facingRight = true;
                 t.localScale = new Vector3(Mathf.Abs(t.localScale.x), t.localScale.y, transform.localScale.z);
             }
@@ -69,7 +84,18 @@ public class CharacterController2D : MonoBehaviour
                 facingRight = false;
                 t.localScale = new Vector3(-Mathf.Abs(t.localScale.x), t.localScale.y, t.localScale.z);
             }
+        } else
+        {
+            if (speed > 0)
+            {
+                speed = speed - patination;
+            }
+            else if (speed < 0)
+            {
+                speed = speed + patination;
+            }
         }
+        Debug.Log(speed);
 
         // Jumping
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
@@ -106,7 +132,7 @@ public class CharacterController2D : MonoBehaviour
         }
 
         // Apply movement velocity
-        r2d.velocity = new Vector2((moveDirection) * maxSpeed, r2d.velocity.y);
+        r2d.velocity = new Vector2((speed) * maxSpeed, r2d.velocity.y);
 
         // Simple debug
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, colliderRadius, 0), isGrounded ? Color.green : Color.red);
