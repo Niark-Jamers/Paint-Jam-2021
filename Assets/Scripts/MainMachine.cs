@@ -7,8 +7,12 @@ public class MainMachine : MonoBehaviour
     [HideInInspector] public enum State {Working, Broken, Fire};
     public State currentState = State.Working;
 
+
+    public float badtimer = 1f;
+    float trueTimer = 0f;
+
     public float brokenBar = 0;
-    public float brokenStep = 10;
+    public float brokenStep = 20;
 
     public float fireBar = 0;
     public float fireStep = 10;
@@ -49,35 +53,56 @@ public class MainMachine : MonoBehaviour
 
     public void PlayerInteraction()
     {
+        Debug.Log("case test");
         switch (currentState)
         {
             case State.Broken :
-                {
-                    MachineBrokenGame();
-                    break;
-                }
-            case State.Fire:
-                {
-                    MachineFireGame();
-                    break;
-                }
-            default:
+            {
+                MachineBrokenGame();
                 break;
+            }
+            case State.Fire:
+            {
+                MachineFireGame();
+                break;
+            }
+            default:
+            {
+                MachineWorkingGame();
+                break;
+            }
         }
+    }
+
+    public virtual void MachineWorkingGame()
+    {
+        Debug.Log("working game");
     }
 
     public virtual void MachineBrokenGame()
     {
         Debug.Log("broken game");
+        BrokenStop();
     }
 
     public virtual void MachineFireGame()
     {
         Debug.Log("fire game");
+        FireStop();
     }
 
     void Update()
     {
+        trueTimer += Time.deltaTime;
+        if (trueTimer >= badtimer)
+        {
+            if (currentState == State.Working)
+            {
+                brokenBar += brokenStep;
+                fireBar += fireStep;
+            }
+            trueTimer = 0;
+        }
         if (fireBar >= 100)
             FireStart();
         if (brokenBar >= 100)
