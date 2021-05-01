@@ -9,6 +9,7 @@ Shader "Unlit/ColorToAlphaUnlit"
     SubShader {
         Tags {"Queue"="Transparent" "RenderType"="Transparent"}
         LOD 100
+        Cull Off
         
         ZWrite Off
         Blend SrcAlpha OneMinusSrcAlpha 

@@ -24,6 +24,7 @@ public class CharacterController2D : MonoBehaviour
     Transform t;
     bool jumpPressed;
     int lastJumpPressedFrame = 2000;
+    Animator animator;
 
     [Header("Jump")]
     public float jumpHeight = 6.5f;
@@ -40,6 +41,7 @@ public class CharacterController2D : MonoBehaviour
         t = transform;
         r2d = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<CapsuleCollider2D>();
+        animator = GetComponent<Animator>();
         r2d.freezeRotation = true;
         r2d.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         r2d.gravityScale = gravityScale;
@@ -113,10 +115,14 @@ public class CharacterController2D : MonoBehaviour
             r2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         else if (r2d.velocity.y > 0 && !wantsToJump)
             r2d.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        
+        animator.SetFloat("Velocity X", Mathf.Abs(r2d.velocity.x));
+        animator.SetFloat("Velocity Y", r2d.velocity.y);
 
         UpdateJumpPressed();
         if (jumpPressed && isGrounded)
         {
+            animator.SetTrigger("Jump");
             r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
         }
 
