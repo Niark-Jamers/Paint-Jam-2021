@@ -9,6 +9,10 @@ public class MainMachine : MonoBehaviour
 
     public GameObject interactionKey;
 
+    public GameObject workingMiniGame;
+    public GameObject brokenMiniGame;
+    public GameObject fireMiniGame;
+
     public float badtimer = 1f;
     float trueTimer = 0f;
 
@@ -62,37 +66,56 @@ public class MainMachine : MonoBehaviour
         {
             case State.Broken :
             {
-                MachineBrokenGame();
+                StartBrokenGame();
                 break;
             }
             case State.Fire:
             {
-                MachineFireGame();
+                StartFireGame();
                 break;
             }
             default:
             {
-                MachineWorkingGame();
+                StartWorkingGame();
                 break;
             }
         }
     }
 
-    public virtual void MachineWorkingGame()
+    public void StartWorkingGame()
     {
+        workingMiniGame.SetActive(true);
         Debug.Log("working game");
     }
 
-    public virtual void MachineBrokenGame()
+    public void StartBrokenGame()
     {
+        brokenMiniGame.SetActive(true);
         Debug.Log("broken game");
-        BrokenStop();
     }
 
-    public virtual void MachineFireGame()
+    public void StartFireGame()
     {
+        fireMiniGame.SetActive(true);
         Debug.Log("fire game");
-        FireStop();
+    }
+
+    public void CloseWorkingGame()
+    {
+        Debug.Log("close working game");
+        workingMiniGame.SetActive(false);
+    }
+
+    public void CloseBrokenGame()
+    {
+        brokenMiniGame.SetActive(false);
+        Debug.Log("close broken game");
+    }
+
+    public void CloseFireGame()
+    {
+        fireMiniGame.SetActive(false);
+        Debug.Log("close fire game");
     }
 
     void Update()
@@ -113,6 +136,11 @@ public class MainMachine : MonoBehaviour
             BrokenStart();
     }
 
+    void CloseGame()
+    {
+        interactionKey.SetActive(false);
+    }
+
     private void OnTriggerStay2D(Collider2D other) {
         if (other.gameObject.tag == "Player" && currentState != State.Working && !interactionKey.activeSelf)
         {
@@ -124,7 +152,7 @@ public class MainMachine : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.tag == "Player")
         {
-            interactionKey.SetActive(false);
+            CloseGame();
         }
     }
 }
