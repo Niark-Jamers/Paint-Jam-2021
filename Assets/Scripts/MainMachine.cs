@@ -55,7 +55,7 @@ public class MainMachine : MonoBehaviour
     public void FireStart()
     {
         currentState = State.Fire;
-        fireBar.
+        firePrefab.SetActive(true);
         sr.color = Color.red;
     }
 
@@ -64,6 +64,7 @@ public class MainMachine : MonoBehaviour
         fireBar = 0;
         currentState = State.Working;
         interactionKey.SetActive(false);
+        firePrefab.SetActive(false);
         sr.color = Color.white;
     }
 
