@@ -455,6 +455,10 @@ PrefabInstance:
       propertyPath: keySpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1390868502, guid: 7e4c727f4db6a6442bbea81ec72bb4c7, type: 3}
+      propertyPath: distanceThreshold
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 1023496595681045329, guid: 7e4c727f4db6a6442bbea81ec72bb4c7, type: 3}
       propertyPath: m_Name
       value: Rhythm Machine
