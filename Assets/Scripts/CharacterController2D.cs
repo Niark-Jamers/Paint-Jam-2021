@@ -158,6 +158,8 @@ public class CharacterController2D : MonoBehaviour
         {
             for (int i = 0; i < colliders.Length; i++)
             {
+                if (colliders[i].isTrigger)
+                    continue;
                 if (colliders[i] != mainCollider)
                 {
                     isGrounded = true;
