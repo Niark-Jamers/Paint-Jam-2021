@@ -289,6 +289,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea9747695f87c6d468d93578471c2f3c, type: 3}
+--- !u!1 &477370269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7668080395052550513, guid: d26474eb724493a489f935f0ece2dd1d, type: 3}
+  m_PrefabInstance: {fileID: 582006579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &524719244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -353,6 +358,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2985070495865092810, guid: d26474eb724493a489f935f0ece2dd1d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3191992962022175783, guid: d26474eb724493a489f935f0ece2dd1d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.7
@@ -405,6 +414,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4960508401595654630, guid: d26474eb724493a489f935f0ece2dd1d, type: 3}
+      propertyPath: brokenBar
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4960508401595654630, guid: d26474eb724493a489f935f0ece2dd1d, type: 3}
+      propertyPath: interactionKey
+      value: 
+      objectReference: {fileID: 477370269}
     - target: {fileID: 4960508401595654631, guid: d26474eb724493a489f935f0ece2dd1d, type: 3}
       propertyPath: m_Name
       value: Machine Cuisson
@@ -553,11 +570,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3374944422568952215, guid: 25b691f3e22c226409b9c7ef10fa811f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.22
+      value: -3.402
       objectReference: {fileID: 0}
     - target: {fileID: 3374944422568952215, guid: 25b691f3e22c226409b9c7ef10fa811f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.339
+      value: -3.14
       objectReference: {fileID: 0}
     - target: {fileID: 3374944422568952215, guid: 25b691f3e22c226409b9c7ef10fa811f, type: 3}
       propertyPath: m_LocalPosition.z

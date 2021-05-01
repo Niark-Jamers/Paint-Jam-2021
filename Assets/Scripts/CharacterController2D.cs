@@ -31,6 +31,9 @@ public class CharacterController2D : MonoBehaviour
     public float lowJumpMultiplier = 2f;
     public int jumpFrameDetectionCount = 20;
 
+    [System.NonSerialized]
+    internal bool disableInputs = false;
+
     // Use this for initialization
     void Start()
     {
@@ -51,6 +54,9 @@ public class CharacterController2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (disableInputs)
+            return;
+
         // Movement controls
         if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
@@ -138,6 +144,8 @@ public class CharacterController2D : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (disableInputs)
+            return;
         Bounds colliderBounds = mainCollider.bounds;
         float colliderRadius = mainCollider.size.x * 0.4f * Mathf.Abs(transform.localScale.x);
         Vector3 groundCheckPos = colliderBounds.min + new Vector3(colliderBounds.size.x * 0.5f, colliderRadius * 0.9f, 0);
@@ -158,7 +166,6 @@ public class CharacterController2D : MonoBehaviour
         }
 
         // Apply movement velocity
-        Debug.Log(speed);
         r2d.velocity = new Vector2(speed, r2d.velocity.y);
 
         // Simple debug

@@ -27,9 +27,9 @@ public class KilnMachine : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
-            slider.value += 1;
-        if (Input.GetKeyDown(KeyCode.D))
             slider.value -= 1;
+        if (Input.GetKeyDown(KeyCode.D))
+            slider.value += 1;
 
         if (slider.value == 7)
         {
