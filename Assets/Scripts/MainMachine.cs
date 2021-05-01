@@ -164,7 +164,7 @@ public class MainMachine : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D other) {
-        if (other.gameObject.tag == "Player" && currentState != State.Working && !interactionKey.activeSelf)
+        if (other.gameObject.tag == "Player" && currentState != State.Working && !interactionKey.activeSelf && (!brokenMiniGame.activeSelf && !fireMiniGame.activeSelf))
         {
             interactionKey.SetActive(true);
         }

@@ -36,7 +36,7 @@ public class MashMiniGame : MonoBehaviour
         {
             currentMash += mashStep;
         }
-        currentMash -= mashStep * Time.deltaTime;
+        currentMash -= mashDown * Time.deltaTime;
         currentMash = currentMash < 0? 0 : currentMash;
         RTSlider.localScale = Vector3.Lerp(new Vector3(lastMash / 100, lastMash/100, 1),new Vector3(currentMash / 100, currentMash/100, 1), Time.deltaTime);
     
