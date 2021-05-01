@@ -22,6 +22,10 @@ public class CharacterController2D : MonoBehaviour
     CapsuleCollider2D mainCollider;
     Transform t;
 
+    [Header("Jump")]
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+
     // Use this for initialization
     void Start()
     {
@@ -43,28 +47,31 @@ public class CharacterController2D : MonoBehaviour
     void Update()
     {
         // Movement controls
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) && (isGrounded || Mathf.Abs(r2d.velocity.x) > 0.01f))
+        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
             moveDirection = Input.GetKey(KeyCode.A) ? -1 : 1;
             if (Input.GetKey(KeyCode.A))
             {
-                if (speed > -1f)
-                {
-                    speed = speed - 0.01f;
-                }
+                speed = -maxSpeed;
+                // if (speed > -1f)
+                // {
+                //     speed = speed - 0.01f;
+                // }
             }
             if (Input.GetKey(KeyCode.D))
             {
-                if (speed < 1f)
-                {
-                    speed = speed + 0.01f;
-                }
+                speed = maxSpeed;
+                // if (speed < 1f)
+                // {
+                //     speed = speed + 0.01f;
+                // }
             }
         }
         else
         {
             if (isGrounded || r2d.velocity.magnitude < 0.1f)
             {
+                speed = 0;
                 moveDirection = 0;
             }
         }
@@ -84,18 +91,24 @@ public class CharacterController2D : MonoBehaviour
             }
         } else
         {
-            if (speed > 0)
-            {
-                speed = speed - 0.025f;
-            }
-            else if (speed < 0)
-            {
-                speed = speed + 0.025f;
-            }
+            // if (speed > 0)
+            // {
+            //     speed = speed - 0.025f;
+            // }
+            // else if (speed < 0)
+            // {
+            //     speed = speed + 0.025f;
+            // }
         }
         //Debug.Log(speed);
 
         // Jumping
+        bool wantsToJump = Input.GetKey(KeyCode.W);
+        if (r2d.velocity.y < 0)
+            r2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        else if (r2d.velocity.y > 0 && !wantsToJump)
+            r2d.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
         {
             r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
@@ -130,7 +143,8 @@ public class CharacterController2D : MonoBehaviour
         }
 
         // Apply movement velocity
-        r2d.velocity = new Vector2((speed) * maxSpeed, r2d.velocity.y);
+        Debug.Log(speed);
+        r2d.velocity = new Vector2(speed, r2d.velocity.y);
 
         // Simple debug
         Debug.DrawLine(groundCheckPos, groundCheckPos - new Vector3(0, colliderRadius, 0), isGrounded ? Color.green : Color.red);
