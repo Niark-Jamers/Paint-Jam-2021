@@ -13,6 +13,7 @@ Shader "Custom/ColorToAlpha"
     {
         Tags {"Queue" = "Transparent" "RenderType"="Transparent" }
         Blend One OneMinusSrcAlpha
+        Cull Off
         LOD 200
 
         CGPROGRAM

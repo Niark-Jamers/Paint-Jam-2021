@@ -106,7 +106,7 @@ public class RhythmMachine : MonoBehaviour
                 if (keyValidated.Contains(key))
                     keyValidated.Remove(key);
                 else
-                    points = 0;
+                    points = Mathf.Max(0, points - 1);
                 keysA.Remove(key);
                 keysS.Remove(key);
                 keysD.Remove(key);
