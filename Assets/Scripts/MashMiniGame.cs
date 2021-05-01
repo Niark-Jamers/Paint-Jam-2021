@@ -16,9 +16,9 @@ public class MashMiniGame : MonoBehaviour
     float lastMash;
 
     float maxMash = 100;
-    float mashStep = 10;
+    float mashStep = 15;
     
-    float mashDown = 40;
+    float mashDown = 30;
     // Start is called before the first frame update
     private void OnEnable() {
         currentMash = 0;

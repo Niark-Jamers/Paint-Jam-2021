@@ -396,9 +396,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4571846908427876271, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187085872287861629, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 454912402362000964, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
 --- !u!4 &2440899387732834176 stripped
 Transform:
