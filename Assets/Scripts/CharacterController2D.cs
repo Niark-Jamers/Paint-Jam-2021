@@ -9,7 +9,6 @@ public class CharacterController2D : MonoBehaviour
 {
     // Move player in 2D space
     public float maxSpeed = 3.4f;
-    public float jumpHeight = 6.5f;
     public float gravityScale = 1.5f;
     public Camera mainCamera;
 
@@ -21,10 +20,14 @@ public class CharacterController2D : MonoBehaviour
     Rigidbody2D r2d;
     CapsuleCollider2D mainCollider;
     Transform t;
+    bool jumpPressed;
+    int lastJumpPressedFrame = 2000;
 
     [Header("Jump")]
+    public float jumpHeight = 6.5f;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
+    public int jumpFrameDetectionCount = 20;
 
     // Use this for initialization
     void Start()
@@ -69,11 +72,8 @@ public class CharacterController2D : MonoBehaviour
         }
         else
         {
-            if (isGrounded || r2d.velocity.magnitude < 0.1f)
-            {
-                speed = 0;
-                moveDirection = 0;
-            }
+            speed = 0;
+            moveDirection = 0;
         }
 
         // Change facing direction
@@ -108,8 +108,9 @@ public class CharacterController2D : MonoBehaviour
             r2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         else if (r2d.velocity.y > 0 && !wantsToJump)
             r2d.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+
+        UpdateJumpPressed();
+        if (jumpPressed && isGrounded)
         {
             r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
         }
@@ -119,6 +120,18 @@ public class CharacterController2D : MonoBehaviour
         {
             mainCamera.transform.position = new Vector3(t.position.x, cameraPos.y, cameraPos.z);
         }
+    }
+
+    void UpdateJumpPressed()
+    {
+        bool jump = Input.GetKeyDown(KeyCode.W);
+        if (jump)
+            lastJumpPressedFrame = 0;
+        
+        // If jump was pressed 4 frames before being grounded, we jump again
+        jumpPressed = lastJumpPressedFrame <= jumpFrameDetectionCount;
+        
+        lastJumpPressedFrame++;
     }
 
     void FixedUpdate()
