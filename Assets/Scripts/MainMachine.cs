@@ -7,6 +7,7 @@ public class MainMachine : MonoBehaviour
     [HideInInspector] public enum State {Working, Broken, Fire};
     public State currentState = State.Working;
 
+    public GameObject interactionKey;
 
     public float badtimer = 1f;
     float trueTimer = 0f;
@@ -21,6 +22,7 @@ public class MainMachine : MonoBehaviour
 
     void Start()
     {
+        interactionKey.SetActive(false);
         sr = this.GetComponent<SpriteRenderer>();
     }
 
@@ -35,6 +37,7 @@ public class MainMachine : MonoBehaviour
     {
         brokenBar = 0;
         currentState = State.Working;
+        interactionKey.SetActive(false);
         sr.color = Color.white;
     }
 
@@ -48,6 +51,7 @@ public class MainMachine : MonoBehaviour
     {
         fireBar = 0;
         currentState = State.Working;
+        interactionKey.SetActive(false);
         sr.color = Color.white;
     }
 
@@ -109,5 +113,18 @@ public class MainMachine : MonoBehaviour
             BrokenStart();
     }
 
+    private void OnTriggerStay2D(Collider2D other) {
+        if (other.gameObject.tag == "Player" && currentState != State.Working && !interactionKey.activeSelf)
+        {
+            interactionKey.SetActive(true);
+        }
+    }
 
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.gameObject.tag == "Player")
+        {
+            interactionKey.SetActive(false);
+        }
+    }
 }
