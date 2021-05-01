@@ -85,18 +85,21 @@ public class MainMachine : MonoBehaviour
     public void StartWorkingGame()
     {
         workingMiniGame.SetActive(true);
+        interactionKey.SetActive(false);
         Debug.Log("working game");
     }
 
     public void StartBrokenGame()
     {
         brokenMiniGame.SetActive(true);
+        interactionKey.SetActive(false);
         Debug.Log("broken game");
     }
 
     public void StartFireGame()
     {
         fireMiniGame.SetActive(true);
+        interactionKey.SetActive(false);
         Debug.Log("fire game");
     }
 
