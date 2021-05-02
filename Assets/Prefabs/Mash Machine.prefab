@@ -331,6 +331,10 @@ PrefabInstance:
       value: 21.16
       objectReference: {fileID: 0}
     - target: {fileID: 454912402362000963, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: brokenSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ce6fec92b838e438d93e6ca3b2ecba80, type: 3}
+    - target: {fileID: 454912402362000963, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: fireMiniGame
       value: 
       objectReference: {fileID: 1800749282898470507}
@@ -342,6 +346,14 @@ PrefabInstance:
       propertyPath: interactionKey
       value: 
       objectReference: {fileID: 1108707296839802643}
+    - target: {fileID: 454912402362000966, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3009d7c9e32984617add768fc26ca340, type: 3}
+    - target: {fileID: 454912402362000966, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc4a2895842b7af4f9627cd6d699fc69, type: 2}
     - target: {fileID: 454912402362000967, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_RootOrder
       value: 0
