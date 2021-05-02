@@ -6,12 +6,14 @@ public class TomatoLeader : MonoBehaviour
 {
     public GameObject[] spawners = new GameObject[5];
     public GameObject[] targets = new GameObject[5];
+
     public GameObject tomatoPrefab;
+    public GameObject tomatoBin;
     public GameObject tomatoParent;
     // Start is called before the first frame update
 
     public float tomatoTimer = 10f;
-    float trueTimer = 0;
+    float trueTimer = 10;
 
     GameObject GetTarget()
     {
@@ -36,6 +38,7 @@ public class TomatoLeader : MonoBehaviour
         newTomato = Instantiate(tomatoPrefab, tmp.transform.position, tmp.transform.rotation, tomatoParent.transform);
         newScript = newTomato.GetComponent<TomatoNinja>();
         newScript.target = GetTarget();
+        newScript.tomatoBin = tomatoBin;
     }
 
     void Start()
