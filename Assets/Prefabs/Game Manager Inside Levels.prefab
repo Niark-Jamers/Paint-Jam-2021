@@ -1700,6 +1700,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3894017485329612563, guid: bf7bae1d1cc530a46986569b6527bf75, type: 3}
+      propertyPath: fadeGameOver
+      value: 
+      objectReference: {fileID: 1922706537}
+    - target: {fileID: 3894017485329612563, guid: bf7bae1d1cc530a46986569b6527bf75, type: 3}
       propertyPath: fadeInAnimation
       value: 
       objectReference: {fileID: 2008804726}
