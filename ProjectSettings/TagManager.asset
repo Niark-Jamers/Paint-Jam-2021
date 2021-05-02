@@ -39,20 +39,23 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3362371163
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Fire
     uniqueID: 2903126381
     locked: 0
+  - name: Player
+    uniqueID: 801056805
+    locked: 0
   - name: MiniGame
     uniqueID: 3710661825
     locked: 0
   - name: UI
     uniqueID: 3776641685
-    locked: 0
-  - name: Player
-    uniqueID: 801056805
     locked: 0
   - name: Foreground
     uniqueID: 2574912297

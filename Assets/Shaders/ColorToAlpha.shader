@@ -28,6 +28,7 @@ Shader "Custom/ColorToAlpha"
         struct Input
         {
             float2 uv_MainTex;
+            float4 color : COLOR;
         };
 
         half _Glossiness;
@@ -52,6 +53,8 @@ Shader "Custom/ColorToAlpha"
                 clip(-1);
             else
                 o.Alpha = c.a;
+
+            o.Albedo *= IN.color;
 
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;

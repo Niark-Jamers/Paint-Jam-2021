@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: ComicSansMS3 SDF
+  m_Name: ComicSansMS3 SDF 2
   m_EditorClassIdentifier: 
-  hashCode: -1808769928
+  hashCode: 1639536234
   material: {fileID: 7796421309589083475}
-  materialHashCode: 14741464
+  materialHashCode: 1248933514
   m_Version: 1.1.0
   m_SourceFontFileGUID: 4afb3f9da32a50a47ac6930aca5768b8
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 4afb3f9da32a50a47ac6930aca5768b8, type: 3}
