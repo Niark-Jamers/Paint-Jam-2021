@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: df6158791d85846ed93b8694e30d479b
+guid: 7cc2b280b748e46f483d342a351888d5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2568956360853038877
-    second: soup_0
+      213: 7826069718863310711
+    second: soup9_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -35,7 +35,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -91,6 +91,18 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -106,13 +118,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: soup_0
+      name: soup9_0
       rect:
         serializedVersion: 2
-        x: 324
-        y: 175
-        width: 159
-        height: 249
+        x: 326
+        y: 159
+        width: 158
+        height: 271
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1720240334c6a320800000000000000
-      internalID: 2568956360853038877
+      spriteID: 77fe94ce1f8cb9c60800000000000000
+      internalID: 7826069718863310711
       vertices: []
       indices: 
       edges: []
