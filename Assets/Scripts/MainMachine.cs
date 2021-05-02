@@ -38,11 +38,14 @@ public class MainMachine : MonoBehaviour
     public float fireStep = 10;
     public float fireStepOffset = 6;
 
+    public float shakeStep = 1.0f;
 
-    public float canProductionTimeout = 0.75f;
+
+    public float canProductionTimeout = 1.5f;
     float lastCanProductionTime;
 
     bool isInFire, isBroken;
+    Vector3 startingPos;
 
     SpriteRenderer sr;
 
@@ -53,6 +56,7 @@ public class MainMachine : MonoBehaviour
         sr = this.GetComponent<SpriteRenderer>();
         character = FindObjectOfType<CharacterController2D>();
         workingSprite = sr.sprite;
+        startingPos = transform.position;
     }
 
     public void BrokenStart()
@@ -158,15 +162,20 @@ public class MainMachine : MonoBehaviour
         character.disableInputs = false;
     }
 
+    bool isWorking =>!isBroken && !isInFire && !GameManager.instance.electricityBroken;
+
     void Update()
     {
+        if (isWorking)
+            transform.position = Vector3.MoveTowards(transform.position, startingPos + Random.insideUnitSphere, shakeStep * Time.deltaTime);
         trueTimer += Time.deltaTime;
         if (trueTimer >= badtimer)
         {
             if (currentState == State.Working && (workingMiniGame == null || !workingMiniGame.activeSelf))
             {
                 brokenBar += brokenStep + Random.Range(-brokenStepOffset, brokenStepOffset);
-                fireBar += fireStep + Random.Range(-fireStepOffset, fireStepOffset);
+                if (GameManager.instance.canCatchFire)
+                    fireBar += fireStep + Random.Range(-fireStepOffset, fireStepOffset);
             }
             trueTimer = 0;
         }
@@ -174,9 +183,8 @@ public class MainMachine : MonoBehaviour
             FireStart();
         if (brokenBar >= 100)
             BrokenStart();
-        
-        
-        if (!isBroken && !isInFire)
+
+        if (isWorking)
         {
             // Produce cans:
             if (Time.time - lastCanProductionTime > canProductionTimeout)

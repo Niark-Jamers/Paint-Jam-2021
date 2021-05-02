@@ -32,6 +32,14 @@ public class CharacterController2D : MonoBehaviour
     public float lowJumpMultiplier = 2f;
     public int jumpFrameDetectionCount = 20;
 
+    [Header("Audio")]
+    public AudioClip[] steps;
+    public AudioClip jump;
+    public float stepTimeout = 0.2f;
+    float lastStep;
+
+    float jumpLastTime;
+
     [System.NonSerialized]
     internal bool disableInputs = false;
 
@@ -109,6 +117,15 @@ public class CharacterController2D : MonoBehaviour
         }
         //Debug.Log(speed);
 
+        if (speed != 0 && isGrounded)
+        {
+            if (Time.time - lastStep > stepTimeout)
+            {
+                lastStep = Time.time;
+                AudioManager.instance.PlaySFX(steps[Random.Range(0, steps.Length)], 0.1f);
+            }
+        }
+
         // Jumping
         bool wantsToJump = !disableInputs && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Z));
         if (r2d.velocity.y < 0)
@@ -120,9 +137,11 @@ public class CharacterController2D : MonoBehaviour
         animator.SetFloat("Velocity Y", r2d.velocity.y);
 
         UpdateJumpPressed();
-        if (jumpPressed && isGrounded)
+        if (jumpPressed && isGrounded && Time.time - jumpLastTime > 0.2f)
         {
+            jumpLastTime = Time.time;
             animator.SetTrigger("Jump");
+            AudioManager.instance.PlaySFX(jump, 0.2f);
             r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
         }
 

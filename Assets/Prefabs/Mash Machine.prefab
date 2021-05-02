@@ -365,7 +365,7 @@ RectTransform:
   m_GameObject: {fileID: 39162895404258509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.1861, y: 2.1861, z: 2.1861}
   m_Children:
   - {fileID: 8232016080436222561}
   - {fileID: 126822472868015071}
@@ -375,7 +375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.53}
+  m_AnchoredPosition: {x: 0, y: 3.76}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1363348305665933527
@@ -658,6 +658,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 454912400765085561, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 454912400765085561, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454912402362000961, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: m_Radius
+      value: 2.71
+      objectReference: {fileID: 0}
     - target: {fileID: 454912402362000962, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_Name
       value: Mash Machine
@@ -691,6 +703,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 3009d7c9e32984617add768fc26ca340, type: 3}
     - target: {fileID: 454912402362000966, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454912402362000966, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 454912402362000966, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454912402362000966, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dc4a2895842b7af4f9627cd6d699fc69, type: 2}
@@ -700,11 +724,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 454912402362000967, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.5051594
+      value: 15.8
       objectReference: {fileID: 0}
     - target: {fileID: 454912402362000967, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5353881
+      value: -11.49
       objectReference: {fileID: 0}
     - target: {fileID: 454912402362000967, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_LocalPosition.z
@@ -744,7 +768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949037578050424532, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4571846908427876271, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_RootOrder

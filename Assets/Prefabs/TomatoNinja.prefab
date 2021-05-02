@@ -504,6 +504,8 @@ MonoBehaviour:
   pathPrefab: {fileID: 2469001221352167923, guid: 5fe2f883f25d9ff4a906a338eaebb441, type: 3}
   follow: {fileID: 1697374508}
   pc: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: f83f9e290dd4cf74bbc874945385337f, type: 3}
+  sliceSound: {fileID: 8300000, guid: d451c69b23a8caa4590e0ee1cadbd18a, type: 3}
 --- !u!50 &1097274495
 Rigidbody2D:
   serializedVersion: 4

@@ -318,6 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 213181911273555642}
   machine: {fileID: 4960508401595654630}
+  movement: {fileID: 8300000, guid: 2881ab00f55ad7b4ab89489426574ee9, type: 3}
 --- !u!1 &4636296815949255618
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,6 +38,12 @@ public class TomatoNinja : MonoBehaviour
 
     Vector3[] waypoints = new Vector3[3];
 
+    bool sliceSoundPlayed = false;
+
+    public AudioClip deathSound;
+    public AudioClip sliceSound;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +65,11 @@ public class TomatoNinja : MonoBehaviour
     {
         if (death == true)
             return;
+        if (sliceSoundPlayed == false)
+        {
+            AudioManager.instance.PlaySFX(sliceSound, 0.5f);
+            sliceSoundPlayed = true;
+        }
         ninjanimator.SetTrigger("ninjaSlice");
     }
 
@@ -95,7 +106,7 @@ public class TomatoNinja : MonoBehaviour
     void CreatePathToBin()
     {
         waypoints[0] = transform.position;
-        waypoints[1] = new Vector3(transform.position.x - tomatoBin.transform.position.x, tomatoBin.transform.position.y + flatY + Random.Range(minY, maxY), 0);
+        waypoints[1] = new Vector3(tomatoBin.transform.position.x + ((transform.position.x - tomatoBin.transform.position.x) / 2), tomatoBin.transform.position.y + flatY + Random.Range(minY, maxY), 0);
         waypoints[2] = tomatoBin.transform.position;
         BezierPath bezierPath = new BezierPath (waypoints, false, PathSpace.xy);
         pc.bezierPath = bezierPath;
@@ -134,7 +145,7 @@ public class TomatoNinja : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("NINJA TOUCHE " + other.gameObject.name);
+        //Debug.Log("NINJA TOUCHE " + other.gameObject.name);
         if (other.gameObject.name == target.name)
         {
             targetFound = true;
@@ -144,6 +155,7 @@ public class TomatoNinja : MonoBehaviour
         {
             if (smoked == true)
                 return;
+            AudioManager.instance.PlaySFX(deathSound, 0.5f);
             death = true;
             CreatePathToBin();
         }
