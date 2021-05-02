@@ -690,7 +690,7 @@ PrefabInstance:
     - target: {fileID: 454912402362000963, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: fireMiniGame
       value: 
-      objectReference: {fileID: 1800749282898470507}
+      objectReference: {fileID: 3974943138922518697}
     - target: {fileID: 454912402362000963, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: brokenMiniGame
       value: 
@@ -794,9 +794,9 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 454912402362000964, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
---- !u!1 &1800749282898470507 stripped
+--- !u!1 &3974943138922518697 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4571846908427876268, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1199691282493344110, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
   m_PrefabInstance: {fileID: 2850775699264655815}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &2440899389363435193 stripped
