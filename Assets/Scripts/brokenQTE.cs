@@ -5,17 +5,22 @@ using UnityEngine.UI;
 
 public class brokenQTE : MonoBehaviour
 {
+    public MainMachine machine;
+    public AudioSource goodBoySound;
+    public AudioSource badBoySound;
     public Sprite leftSolution;
     public Sprite rightSolution;
     public Sprite downSolution;
     public Sprite upSolution;
     public int iteration = 3;
+    private int curIteration = 3;
     private List<Sprite> possibleSolution = new List<Sprite>();
     private int solutionNumber;
     public GameObject problem;
     // Start is called before the first frame update
     void Start()
     {
+        curIteration = iteration;
         possibleSolution.Add(leftSolution);
         possibleSolution.Add(rightSolution);
         possibleSolution.Add(downSolution);
@@ -26,19 +31,19 @@ public class brokenQTE : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Q))
         {
             TrySolution(0);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
             TrySolution(1);
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
             TrySolution(2);
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Z))
         {
             TrySolution(3);
         }
@@ -56,19 +61,20 @@ public class brokenQTE : MonoBehaviour
     {
         if (trying == solutionNumber)
         {
-            iteration -= 1;
-            Debug.Log(iteration);
+            curIteration -= 1;
             GoodSolution();
         }
         else
         {
+            badBoySound.Play();
             WrongSolution();
         }
     }
 
     void GoodSolution()
     {
-        if (iteration > 0)
+        goodBoySound.Play();
+        if (curIteration > 0)
         {
             ChooseRandom();
         }
@@ -83,7 +89,14 @@ public class brokenQTE : MonoBehaviour
     }
     void QuitMiniGame()
     {
-        gameObject.SetActive(false);
+        machine.BrokenStop();
+        StartCoroutine(Exite());
+    }
+
+    IEnumerator Exite()
+    {
+        yield return new WaitWhile(() => goodBoySound.isPlaying);
+        machine.CloseBrokenGame();
     }
 }
 
