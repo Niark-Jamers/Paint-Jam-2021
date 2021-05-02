@@ -145,6 +145,16 @@ MonoBehaviour:
   fallMultiplier: 4
   lowJumpMultiplier: 7
   jumpFrameDetectionCount: 20
+  steps:
+  - {fileID: 8300000, guid: eeee1930ef1eaa34694a8aecbd1ec163, type: 3}
+  - {fileID: 8300000, guid: 8fa9a589888a60c49bbbdd3b85a98562, type: 3}
+  - {fileID: 8300000, guid: e7daf5cd985be1a4e987cf5ebe371fe8, type: 3}
+  - {fileID: 8300000, guid: 3c5cd013b45b8c94abc2ba8be246194c, type: 3}
+  - {fileID: 8300000, guid: f97d0e5216b5e8e4e9f5d7243e9738dc, type: 3}
+  - {fileID: 8300000, guid: a77d5fd1b8a632e43a3e791ee5e37451, type: 3}
+  - {fileID: 8300000, guid: 4f67fc0ef0f20c246b1065dfc8dfe4df, type: 3}
+  jump: {fileID: 8300000, guid: e65e045ca67a9784d853ccbd69c328e8, type: 3}
+  stepTimeout: 0.3
 --- !u!114 &2036841041217753067
 MonoBehaviour:
   m_ObjectHideFlags: 0
