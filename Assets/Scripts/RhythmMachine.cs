@@ -16,6 +16,8 @@ public class RhythmMachine : MonoBehaviour
 
     public GameObject line;
     public Slider pointCounter;
+    public AudioSource goodBoySound;
+    public AudioSource badBoySound;
 
     public float keySpeed = 2;
 
@@ -56,7 +58,10 @@ public class RhythmMachine : MonoBehaviour
                 if (IsNearLine(key))
                     ok = AddPoint(key);
             if (!ok)
+            {
                 points = 0;
+                badBoySound.Play();
+            }
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
@@ -65,7 +70,10 @@ public class RhythmMachine : MonoBehaviour
                 if (IsNearLine(key))
                     ok = AddPoint(key);
             if (!ok)
+            {
                 points = 0;
+                badBoySound.Play();
+            }
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
@@ -74,7 +82,10 @@ public class RhythmMachine : MonoBehaviour
                 if (IsNearLine(key))
                     ok = AddPoint(key);
             if (!ok)
+            {
                 points = 0;
+                badBoySound.Play();
+            }
         }
 
         bool IsNearLine(GameObject key)
@@ -86,12 +97,13 @@ public class RhythmMachine : MonoBehaviour
 
         bool AddPoint(GameObject keyObject)
         {
+            goodBoySound.Play();
             keyValidated.Add(keyObject);
             points++;
             if (points == 3)
             {
                 machine.BrokenStop();
-                machine.CloseBrokenGame();
+                StartCoroutine(Exite());
             }
             return true;
         }
@@ -150,5 +162,11 @@ public class RhythmMachine : MonoBehaviour
 
             return go;
         }
+    }
+
+    IEnumerator Exite()
+    {
+        yield return new WaitWhile(() => goodBoySound.isPlaying);
+        machine.CloseBrokenGame();
     }
 }
