@@ -8,6 +8,8 @@ public class KilnMachine : MonoBehaviour
     public Slider slider;
     public MainMachine machine;
 
+    public AudioClip movement;
+
     void OnEnable()
     {
         slider.gameObject.SetActive(true);
@@ -26,10 +28,16 @@ public class KilnMachine : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Q))
+        {
             slider.value -= 1;
+            AudioManager.instance.PlaySFX(movement, 0.3f);
+        }
         if (Input.GetKeyDown(KeyCode.D))
+        {
             slider.value += 1;
+            AudioManager.instance.PlaySFX(movement, 0.3f);
+        }
 
         if (slider.value == 7)
         {

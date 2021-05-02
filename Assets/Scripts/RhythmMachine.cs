@@ -51,7 +51,7 @@ public class RhythmMachine : MonoBehaviour
             timeout = Time.time;
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             bool ok = false;
             foreach (var key in keysA)
@@ -63,7 +63,7 @@ public class RhythmMachine : MonoBehaviour
                 badBoySound.Play();
             }
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             bool ok = false;
             foreach (var key in keysS)
@@ -75,7 +75,7 @@ public class RhythmMachine : MonoBehaviour
                 badBoySound.Play();
             }
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             bool ok = false;
             foreach (var key in keysD)
