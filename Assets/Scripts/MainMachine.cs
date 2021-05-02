@@ -32,9 +32,12 @@ public class MainMachine : MonoBehaviour
 
     public float brokenBar = 0;
     public float brokenStep = 20;
+    public float brokenStepOffset = 10;
 
     public float fireBar = 0;
     public float fireStep = 10;
+    public float fireStepOffset = 6;
+
 
     public float canProductionTimeout = 0.75f;
     float lastCanProductionTime;
@@ -162,8 +165,8 @@ public class MainMachine : MonoBehaviour
         {
             if (currentState == State.Working && (workingMiniGame == null || !workingMiniGame.activeSelf))
             {
-                brokenBar += brokenStep;
-                fireBar += fireStep;
+                brokenBar += brokenStep + Random.Range(-brokenStepOffset, brokenStepOffset);
+                fireBar += fireStep + Random.Range(-fireStepOffset, fireStepOffset);
             }
             trueTimer = 0;
         }

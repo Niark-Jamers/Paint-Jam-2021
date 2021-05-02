@@ -562,6 +562,71 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1821902612
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2876355481879254377, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876355481879254377, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876355481879254377, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876355481879254377, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876355481879254377, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876355481879254377, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876355481879254377, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876355481879254377, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876355481879254377, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876355481879254377, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876355481879254377, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3219169579053606618, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826905197271958728, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
+      propertyPath: m_Name
+      value: Game Manager Inside Levels
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273748153597615229, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: be4c45006aa358b49b9ca0754afbcb55, type: 3}
 --- !u!1 &1970379604 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2440899387732834181, guid: 8e642b48ab8fc494688b5560c004e926, type: 3}
