@@ -492,8 +492,9 @@ MonoBehaviour:
   brokenStep: 20
   brokenStepOffset: 10
   fireBar: 0
-  fireStep: 5
-  fireStepOffset: 6
+  fireStep: 2.5
+  fireStepOffset: 3
+  shakeStep: 1
   canProductionTimeout: 1.5
 --- !u!1 &1199691282493344110
 GameObject:

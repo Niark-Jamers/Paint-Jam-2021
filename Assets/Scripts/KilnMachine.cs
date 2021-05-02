@@ -31,12 +31,12 @@ public class KilnMachine : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Q))
         {
             slider.value -= 1;
-            AudioManager.instance.PlaySFX(movement, 0.4f);
+            AudioManager.instance.PlaySFX(movement, 0.3f);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             slider.value += 1;
-            AudioManager.instance.PlaySFX(movement, 0.4f);
+            AudioManager.instance.PlaySFX(movement, 0.3f);
         }
 
         if (slider.value == 7)
