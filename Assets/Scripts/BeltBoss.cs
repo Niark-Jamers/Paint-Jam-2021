@@ -71,7 +71,8 @@ public class BeltBoss : MonoBehaviour
         Debug.Log("STOP TOMATO");
         foreach (Transform t in beltHolder.transform)
         {
-            t.gameObject.GetComponent<PathFollower>().speed = 0;
+            if (t.GetComponent<BaseTomato>().Canstop == true)
+                t.gameObject.GetComponent<PathFollower>().speed = 0;
         }
         trueIsStop = true;
     }
