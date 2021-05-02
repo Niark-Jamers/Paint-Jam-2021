@@ -651,6 +651,7 @@ MonoBehaviour:
   MGSlider: {fileID: 6047378691989820410}
   machine: {fileID: 2440899387732834180}
   RTSlider: {fileID: 126822472868015071}
+  mashSound: {fileID: 8300000, guid: 69480f3ccb15d2d48a1806e117e8c29d, type: 3}
 --- !u!1001 &2850775699264655815
 PrefabInstance:
   m_ObjectHideFlags: 0
