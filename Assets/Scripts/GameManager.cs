@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public Animator fadeOutAnimation;
     public float fadeOutTime = 2f;
 
+    bool levelSucceeded = false;
 
     // Start is called before the first frame update
     void Start()
@@ -74,14 +75,29 @@ public class GameManager : MonoBehaviour
 
         if (GetLevelTimeBetween01() >= 1.0f)
         {
-            StartCoroutine(RestartLevel());
-
-            IEnumerator RestartLevel()
+            if (levelSucceeded)
             {
-                // TODO: play you loose music
-                yield return new WaitForSeconds(1f);
+                StartCoroutine(FinishLevel());
 
-                yield return FadeAndLoad(sceneList[sceneNumber]);
+                IEnumerator FinishLevel()
+                {
+                    // TODO: play sound and wait a bit
+                    yield return new WaitForSeconds(1);
+
+                    yield return FadeAndLoad(sceneList[sceneNumber + 1]);
+                }
+            }
+            else
+            {
+                StartCoroutine(RestartLevel());
+
+                IEnumerator RestartLevel()
+                {
+                    // TODO: play you loose music
+                    yield return new WaitForSeconds(1f);
+
+                    yield return FadeAndLoad(sceneList[sceneNumber]);
+                }
             }
         }
     }
@@ -126,15 +142,7 @@ public class GameManager : MonoBehaviour
 
         if (canSlider.value == canGoal)
         {
-            StartCoroutine(FinishLevel());
-
-            IEnumerator FinishLevel()
-            {
-                // TODO: play sound and wait a bit
-                yield return new WaitForSeconds(1);
-
-                yield return FadeAndLoad(sceneList[sceneNumber + 1]);
-            }
+            levelSucceeded = true;
         }
     }
 

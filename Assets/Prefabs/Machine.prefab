@@ -492,6 +492,7 @@ MonoBehaviour:
   brokenStep: 20
   fireBar: 0
   fireStep: 5
+  canProductionTimeout: 0.75
 --- !u!1 &1199691282493344110
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,11 +1565,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3374944422568952215, guid: 25b691f3e22c226409b9c7ef10fa811f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 3374944422568952215, guid: 25b691f3e22c226409b9c7ef10fa811f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 3374944422568952215, guid: 25b691f3e22c226409b9c7ef10fa811f, type: 3}
       propertyPath: m_LocalPosition.z
