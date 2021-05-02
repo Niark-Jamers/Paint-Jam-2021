@@ -33,6 +33,7 @@ public class electicityLever : MonoBehaviour
                 pos.transform.localPosition = new Vector3(defaultPos.x, defaultPos.y, defaultPos.z);
                 AudioManager.instance.PlaySFXPitch3(goodBoySound.clip);
                 machine.BrokenStop();
+                GameManager.instance.RepairElectricity();
                 machine.CloseBrokenGame();
             }
         }
