@@ -387,7 +387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2440899387732834176, guid: 8e642b48ab8fc494688b5560c004e926, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.48
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2440899387732834176, guid: 8e642b48ab8fc494688b5560c004e926, type: 3}
       propertyPath: m_LocalPosition.z
@@ -536,7 +536,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -580,11 +580,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2440899387732834176, guid: 8e642b48ab8fc494688b5560c004e926, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.68
+      value: -14.12
       objectReference: {fileID: 0}
     - target: {fileID: 2440899387732834176, guid: 8e642b48ab8fc494688b5560c004e926, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.48
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2440899387732834176, guid: 8e642b48ab8fc494688b5560c004e926, type: 3}
       propertyPath: m_LocalPosition.z
@@ -645,7 +645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6699683722870223700, guid: 7859dce11029b6b4bb057c7664950efd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.13
+      value: -8.66
       objectReference: {fileID: 0}
     - target: {fileID: 6699683722870223700, guid: 7859dce11029b6b4bb057c7664950efd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -700,14 +700,6 @@ PrefabInstance:
       propertyPath: targets.Array.data[1]
       value: 
       objectReference: {fileID: 957682927}
-    - target: {fileID: 5014451207856803834, guid: 7ff1fdd3c96d1744fac9e6c81024fc0b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.21
-      objectReference: {fileID: 0}
-    - target: {fileID: 5014451207856803834, guid: 7ff1fdd3c96d1744fac9e6c81024fc0b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5.63
-      objectReference: {fileID: 0}
     - target: {fileID: 9069670377590593382, guid: 7ff1fdd3c96d1744fac9e6c81024fc0b, type: 3}
       propertyPath: m_Name
       value: TomatoSensei

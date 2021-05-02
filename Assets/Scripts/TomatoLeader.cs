@@ -10,6 +10,7 @@ public class TomatoLeader : MonoBehaviour
     public GameObject tomatoPrefab;
     public GameObject tomatoBin;
     public GameObject tomatoParent;
+    public GameObject pathHolder;
     // Start is called before the first frame update
 
     public float tomatoTimer = 10f;
@@ -39,6 +40,7 @@ public class TomatoLeader : MonoBehaviour
         newScript = newTomato.GetComponent<TomatoNinja>();
         newScript.target = GetTarget();
         newScript.tomatoBin = tomatoBin;
+        newScript.pathHolder = pathHolder;
     }
 
     void Start()

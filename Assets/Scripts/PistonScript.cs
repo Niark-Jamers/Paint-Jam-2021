@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class CharPrefabScript : MonoBehaviour
+public class PistonScript : MonoBehaviour
 {
     
-    public GameObject spriteHolder;
-
-    //char up down movement
-    float maxY = -10;
-    float minY = -13;
+    float maxY = 2.0f;
+    float minY = -0.4f;
     public float speed = 2;
     float realSpeed;
-    public float maxTimer = 1.5f;
+    public float maxTimer = 1.0f;
     public float minTimer = 0.5f;
     float timer = 0;
-    bool goingUp = true;
+    bool goingUp = false;
 
 
     void Start()
@@ -31,21 +28,19 @@ public class CharPrefabScript : MonoBehaviour
             timer = Random.Range(minTimer, maxTimer);
             goingUp = !goingUp;
         }
-        if (spriteHolder.transform.position.y < minY)
+        if (transform.position.y < transform.parent.transform.position.y + minY)
         {
             goingUp = true;
+            timer = maxTimer + 0.2f;
         }
-        if (spriteHolder.transform.position.y > maxY)
+        if (transform.transform.position.y > transform.parent.transform.position.y + maxY)
         {
             goingUp = false;
+            timer = maxTimer + 0.2f;
         }
         realSpeed = (goingUp == true) ? speed : -speed;
         timer -= Time.deltaTime;
-        foreach (Transform child in transform)
-        {
-            child.position = new Vector3(child.position.x, child.position.y + realSpeed * Time.deltaTime, child.position.z);
-        }
-        
+        transform.Translate(Vector3.up * realSpeed * Time.deltaTime);        
     }
 
 

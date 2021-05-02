@@ -130,14 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1390868502, guid: 7e4c727f4db6a6442bbea81ec72bb4c7, type: 3}
-      propertyPath: badBoySound
-      value: 
-      objectReference: {fileID: 204587852}
-    - target: {fileID: 1390868502, guid: 7e4c727f4db6a6442bbea81ec72bb4c7, type: 3}
-      propertyPath: goodBoySound
-      value: 
-      objectReference: {fileID: 204587851}
     - target: {fileID: 1023496595681045329, guid: 7e4c727f4db6a6442bbea81ec72bb4c7, type: 3}
       propertyPath: m_Name
       value: Rhythm Machine
