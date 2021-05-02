@@ -579,6 +579,9 @@ MonoBehaviour:
   rightKey: {fileID: 6209355118984144493}
   downKey: {fileID: 5054162630374668331}
   leftKey: {fileID: 5977865733123486837}
+  woosh:
+  - {fileID: 8300000, guid: b64bb59b450457a4493c6194fbcbec01, type: 3}
+  - {fileID: 8300000, guid: 7b1aadb9537d1784f919e3dcb79e2032, type: 3}
 --- !u!1 &6953794860697332332
 GameObject:
   m_ObjectHideFlags: 0
