@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,11 +34,23 @@ public class GameManager : MonoBehaviour
 
     [Header("Features")]
     public bool canCatchFire = true;
+    public bool electricityCanBreak = true;
+    public float electricityOutageTimeout = 30;
+    float electricityBreakTime;
+    float electricityOutageTimeoutWithRandom;
+
+    internal bool electricityBroken;
+
+    GameObject[] lights;
 
     // Start is called before the first frame update
     void Start()
     {
         levelStartTime = Time.time;
+        electricityBreakTime = Time.time;
+        electricityOutageTimeoutWithRandom = electricityOutageTimeout + Random.Range(-15f, 15f);
+
+        lights = Object.FindObjectsOfType<PolygonCollider2D>().Select(p => (p as PolygonCollider2D).gameObject).ToArray();
 
         curScene = SceneManager.GetActiveScene().name;
         instance = this;
@@ -108,6 +121,15 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        if (electricityCanBreak)
+        {
+            if (Time.time - electricityBreakTime > electricityOutageTimeoutWithRandom)
+            {
+                electricityOutageTimeoutWithRandom = electricityOutageTimeout + Random.Range(-15f, 15f);
+                BreakElectricity();
+            }
+        }
     }
 
     public void LoadNext()
@@ -163,6 +185,24 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(curScene);
+    }
+
+    public void BreakElectricity()
+    {
+        electricityBroken = true;
+
+        // Disable lights:
+        foreach (var light in lights)
+            light.SetActive(false);
+    }
+
+    public void RepairElectricity()
+    {
+        electricityBroken = false;
+
+        // Disable lights:
+        foreach (var light in lights)
+            light.SetActive(true);
     }
 
     void Pause()
