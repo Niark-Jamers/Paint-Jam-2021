@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Tomato
-  m_Shader: {fileID: 4800000, guid: d33bf50536be4744eb2ce53ea03c5947, type: 3}
+  m_Shader: {fileID: 4800000, guid: b7d3e9458589c2948bfb1b7e5c548674, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -63,7 +63,9 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _MaxLuminance: 1
     - _Metallic: 0
+    - _MinLuminance: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02

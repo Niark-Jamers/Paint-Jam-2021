@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public float fadeOutTime = 2f;
     public Animator fadeInAnimationFailed;
     public float fadeOutTimeFailed = 2f;
+    public Animator fadeGameOver;
 
     bool levelSucceeded = false;
 
@@ -164,6 +165,11 @@ public class GameManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
  
         yield break;
+    }
+
+    public void GameOverAnimation()
+    {
+        fadeGameOver.SetTrigger("Start");
     }
 
     public void AddCans(int amount)

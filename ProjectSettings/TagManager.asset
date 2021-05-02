@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Machine
   - TomatoNinja
+  - Tomato
   layers:
   - Default
   - TransparentFX
