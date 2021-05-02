@@ -145,6 +145,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FadeAndLoad(string scene)
     {
+        AudioManager.instance.StopBackgroundMusic();
         if (levelSucceeded)
             fadeInAnimation.SetTrigger("StartSuccess");
         else

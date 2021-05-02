@@ -32,7 +32,10 @@ public class Clock : MonoBehaviour
 
     IEnumerator Tick()
     {
-        for (int i = 0; i < 10; i++)
+        float timePercent = GameManager.instance.maxTimeInLevel * 0.15f;
+        float t = Time.time;
+
+        while (Time.time - t < timePercent)
         {
             AudioManager.instance.PlaySFX(clip, 0.8f);
             yield return new WaitForSeconds(1f);
