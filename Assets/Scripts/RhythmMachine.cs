@@ -51,7 +51,7 @@ public class RhythmMachine : MonoBehaviour
             timeout = Time.time;
         }
 
-        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Left))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             bool ok = false;
             foreach (var key in keysA)
