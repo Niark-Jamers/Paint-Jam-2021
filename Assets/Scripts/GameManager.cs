@@ -182,7 +182,6 @@ public class GameManager : MonoBehaviour
 
         if (canSlider.value == canGoal)
         {
-            Debug.Log("OK!");
             levelSucceeded = true;
         }
     }
