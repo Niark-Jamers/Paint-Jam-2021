@@ -59,7 +59,6 @@ public class RhythmMachine : MonoBehaviour
                     ok = AddPoint(key);
             if (!ok)
             {
-                points = 0;
                 badBoySound.Play();
             }
         }
@@ -71,7 +70,6 @@ public class RhythmMachine : MonoBehaviour
                     ok = AddPoint(key);
             if (!ok)
             {
-                points = 0;
                 badBoySound.Play();
             }
         }
@@ -83,7 +81,6 @@ public class RhythmMachine : MonoBehaviour
                     ok = AddPoint(key);
             if (!ok)
             {
-                points = 0;
                 badBoySound.Play();
             }
         }
