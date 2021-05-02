@@ -141,7 +141,7 @@ MonoBehaviour:
   acceleration: 0.125
   patination: 0.02
   mainCamera: {fileID: 0}
-  jumpHeight: 30
+  jumpHeight: 31
   fallMultiplier: 4
   lowJumpMultiplier: 7
   jumpFrameDetectionCount: 20
