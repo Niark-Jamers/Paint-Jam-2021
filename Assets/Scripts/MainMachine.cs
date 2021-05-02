@@ -171,7 +171,8 @@ public class MainMachine : MonoBehaviour
             if (currentState == State.Working && (workingMiniGame == null || !workingMiniGame.activeSelf))
             {
                 brokenBar += brokenStep + Random.Range(-brokenStepOffset, brokenStepOffset);
-                fireBar += fireStep + Random.Range(-fireStepOffset, fireStepOffset);
+                if (GameManager.instance.canCatchFire)
+                    fireBar += fireStep + Random.Range(-fireStepOffset, fireStepOffset);
             }
             trueTimer = 0;
         }

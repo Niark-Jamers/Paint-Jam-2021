@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
 
     bool levelSucceeded = false;
 
+    [Header("Features")]
+    public bool canCatchFire = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +43,10 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         if (canSlider != null)
+        {
             canSlider.maxValue = canGoal;
+            canSlider.value = 0;
+        }
 
         for (int i = 0; i < sceneList.Length; i++)
         {
