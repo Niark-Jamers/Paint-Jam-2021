@@ -38,6 +38,12 @@ public class TomatoNinja : MonoBehaviour
 
     Vector3[] waypoints = new Vector3[3];
 
+    bool sliceSoundPlayed = false;
+
+    public AudioClip deathSound;
+    public AudioClip sliceSound;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +65,11 @@ public class TomatoNinja : MonoBehaviour
     {
         if (death == true)
             return;
+        if (sliceSoundPlayed == false)
+        {
+            AudioManager.instance.PlaySFX(sliceSound, 0.5f);
+            sliceSoundPlayed = true;
+        }
         ninjanimator.SetTrigger("ninjaSlice");
     }
 
@@ -144,6 +155,7 @@ public class TomatoNinja : MonoBehaviour
         {
             if (smoked == true)
                 return;
+            AudioManager.instance.PlaySFX(deathSound, 0.5f);
             death = true;
             CreatePathToBin();
         }
