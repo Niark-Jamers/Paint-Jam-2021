@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public float fadeOutTime = 2f;
     public Animator fadeInAnimationFailed;
     public float fadeOutTimeFailed = 2f;
+    public Animator fadeGameOver;
 
     bool levelSucceeded = false;
 
@@ -124,11 +125,8 @@ public class GameManager : MonoBehaviour
 
         if (electricityCanBreak)
         {
-            if (Time.time - electricityBreakTime > electricityOutageTimeoutWithRandom)
-            {
-                electricityOutageTimeoutWithRandom = electricityOutageTimeout + Random.Range(-15f, 15f);
+            if (Time.time - electricityBreakTime > electricityOutageTimeoutWithRandom && !electricityBroken)
                 BreakElectricity();
-            }
         }
     }
 
@@ -169,6 +167,11 @@ public class GameManager : MonoBehaviour
         yield break;
     }
 
+    public void GameOverAnimation()
+    {
+        fadeGameOver.SetTrigger("Start");
+    }
+
     public void AddCans(int amount)
     {
         canSlider.value += amount;
@@ -199,6 +202,7 @@ public class GameManager : MonoBehaviour
     public void RepairElectricity()
     {
         electricityBroken = false;
+        electricityOutageTimeoutWithRandom = electricityOutageTimeout + Random.Range(-15f, 15f);
 
         // Disable lights:
         foreach (var light in lights)
