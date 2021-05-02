@@ -14,6 +14,8 @@ public class VentBrokenGame : MonoBehaviour
     public GameObject downKey;
     public GameObject leftKey;
 
+    public AudioClip[] woosh = new AudioClip[2];
+
     [HideInInspector] public enum VentState {up, right, down, left};
 
     int enumLenght;
@@ -73,6 +75,7 @@ public class VentBrokenGame : MonoBehaviour
 
     void NextKey()
     {
+        AudioManager.instance.PlaySFX(woosh[Random.Range(0, 2)], 0.3f);
         currentState = (VentState)(((int)currentState + 1) < enumLenght? ((int)currentState + 1): 0);
         SetManivelleDir();
         activateKey();
