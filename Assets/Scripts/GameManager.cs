@@ -126,7 +126,10 @@ public class GameManager : MonoBehaviour
         if (electricityCanBreak)
         {
             if (Time.time - electricityBreakTime > electricityOutageTimeoutWithRandom && !electricityBroken)
+            {
+                electricityOutageTimeoutWithRandom = electricityOutageTimeout + Random.Range(-15f, 15f);
                 BreakElectricity();
+            }
         }
     }
 
@@ -202,7 +205,7 @@ public class GameManager : MonoBehaviour
     public void RepairElectricity()
     {
         electricityBroken = false;
-        electricityOutageTimeoutWithRandom = electricityOutageTimeout + Random.Range(-15f, 15f);
+        electricityBreakTime = Time.time;
 
         // Disable lights:
         foreach (var light in lights)
