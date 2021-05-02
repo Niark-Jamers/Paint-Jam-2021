@@ -158,10 +158,10 @@ RectTransform:
   m_Father: {fileID: 1486540035}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.7310249, y: 0.91743267}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -14}
+  m_SizeDelta: {x: 172, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &889516724
 CanvasRenderer:
@@ -675,8 +675,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -0.000015258789, y: 1.1778998}
-  m_SizeDelta: {x: 0.000030517578, y: 4.5305}
+  m_AnchoredPosition: {x: -0.000015258789, y: -0.000034809113}
+  m_SizeDelta: {x: 0, y: 9.9999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2133745847786519432
 CanvasRenderer:
@@ -750,8 +750,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_AnchoredPosition: {x: 0, y: -1.6806}
+  m_SizeDelta: {x: 20, y: 8.8389}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5422836295398997088
 CanvasRenderer:
@@ -861,7 +861,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 2.5, y: 0}
+  m_AnchoredPosition: {x: 2.4346008, y: 0.20692444}
   m_SizeDelta: {x: 5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1887334295803698371
@@ -986,8 +986,8 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8273748153597615229}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MaxValue: 30
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1039,6 +1039,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager Inside Levels
       objectReference: {fileID: 0}
+    - target: {fileID: 3894017485329612563, guid: bf7bae1d1cc530a46986569b6527bf75, type: 3}
+      propertyPath: canSlider
+      value: 
+      objectReference: {fileID: 7609566454597113539}
     - target: {fileID: 3894017485329612563, guid: bf7bae1d1cc530a46986569b6527bf75, type: 3}
       propertyPath: fadeInTime
       value: 5
