@@ -38,11 +38,14 @@ public class MainMachine : MonoBehaviour
     public float fireStep = 10;
     public float fireStepOffset = 6;
 
+    public float shakeStep = 1.0f;
+
 
     public float canProductionTimeout = 0.75f;
     float lastCanProductionTime;
 
     bool isInFire, isBroken;
+    Vector3 startingPos;
 
     SpriteRenderer sr;
 
@@ -53,6 +56,7 @@ public class MainMachine : MonoBehaviour
         sr = this.GetComponent<SpriteRenderer>();
         character = FindObjectOfType<CharacterController2D>();
         workingSprite = sr.sprite;
+        startingPos = transform.position;
     }
 
     public void BrokenStart()
@@ -160,6 +164,7 @@ public class MainMachine : MonoBehaviour
 
     void Update()
     {
+        transform.position = Vector3.MoveTowards(transform.position, startingPos + Random.insideUnitSphere, shakeStep * Time.deltaTime);
         trueTimer += Time.deltaTime;
         if (trueTimer >= badtimer)
         {
