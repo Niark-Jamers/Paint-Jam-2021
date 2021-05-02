@@ -122,7 +122,7 @@ public class CharacterController2D : MonoBehaviour
             if (Time.time - lastStep > stepTimeout)
             {
                 lastStep = Time.time;
-                AudioManager.instance.PlaySFX(steps[Random.Range(0, steps.Length)], 0.5f);
+                AudioManager.instance.PlaySFX(steps[Random.Range(0, steps.Length)], 0.1f);
             }
         }
 
