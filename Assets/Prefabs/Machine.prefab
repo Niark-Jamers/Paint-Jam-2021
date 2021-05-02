@@ -353,7 +353,6 @@ GameObject:
   - component: {fileID: 454912402362000966}
   - component: {fileID: 454912402362000961}
   - component: {fileID: 454912402362000960}
-  - component: {fileID: 454912402362000964}
   - component: {fileID: 454912402362000963}
   m_Layer: 0
   m_Name: Machine
@@ -467,32 +466,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &454912402362000964
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 454912402362000962}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &454912402362000963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,6 +480,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   interactionKey: {fileID: 454912400765085562}
+  fireColor: {r: 1, g: 0.5613208, b: 0.5613208, a: 1}
+  brokenColor: {r: 0.94886315, g: 0.6179246, b: 1, a: 1}
+  brokenSprite: {fileID: 0}
   workingMiniGame: {fileID: 0}
   brokenMiniGame: {fileID: 0}
   fireMiniGame: {fileID: 1199691282493344110}
@@ -567,6 +543,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   machine: {fileID: 454912402362000963}
+  waterMove: {fileID: 8300000, guid: ee39dfea46edbe94b95584aaa191a3ec, type: 3}
+  extinguish: {fileID: 8300000, guid: 7b1aadb9537d1784f919e3dcb79e2032, type: 3}
   fire: {fileID: 3467427680346971133, guid: faa6e5c0efd57944d992c13008766910, type: 3}
   waterDrop: {fileID: 6749941963421417400}
 --- !u!1 &1310602298377988299
