@@ -89,6 +89,7 @@ public class brokenQTE : MonoBehaviour
     }
     void QuitMiniGame()
     {
+        curIteration = iteration;
         machine.BrokenStop();
         StartCoroutine(Exite());
     }
