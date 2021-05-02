@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
+using PathCreation.Examples;
 
 public class TomatoNinja : MonoBehaviour
 {
@@ -21,12 +22,27 @@ public class TomatoNinja : MonoBehaviour
     public float speed = 5;
 
     bool targetFound = false;
+
+    public GameObject pathHolder;
+    public GameObject pathPrefab;
+
+    public PathFollower follow;
+    public PathCreator pc;
+    GameObject path;
+    float flatY = 2;
+    float minY = 2;
+    float maxY = 5;
+
+    Vector3[] waypoints = new Vector3[3];
+
     // Start is called before the first frame update
     void Start()
     {
         startTime = Time.time;
         startPos = transform.position;
         lenght = Vector3.Distance(startPos, target.transform.position);
+        path =  Instantiate(pathPrefab, Vector3.zero, Quaternion.Euler(Vector3.zero), pathHolder.transform);
+        pc = path.GetComponent<PathCreator>();
     }
 
     void MoveNinja()
@@ -72,9 +88,23 @@ public class TomatoNinja : MonoBehaviour
         transform.RotateAround(transform.position, transform.forward, Time.deltaTime * rotationSpeed);
     }
 
+
+    void CreatePathToBin()
+    {
+        waypoints[0] = transform.position;
+        waypoints[1] = new Vector3(transform.position.x - tomatoBin.transform.position.x, tomatoBin.transform.position.y + flatY + Random.Range(minY, maxY), 0);
+        waypoints[2] = tomatoBin.transform.position;
+        BezierPath bezierPath = new BezierPath (waypoints, false, PathSpace.xy);
+        pc.bezierPath = bezierPath;
+    }
+
+    private void OnDestroy() {
+        Destroy(path);
+    }
+
     void GoToNinjaBin()
     {
-
+        follow.pathCreator = pc;
     }
 
     private void Update() {
@@ -110,6 +140,7 @@ public class TomatoNinja : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             death = true;
+            CreatePathToBin();
         }
     }
 

@@ -201,7 +201,7 @@ MonoBehaviour:
   - {fileID: 4443424666080915921}
   m_Bounds:
     m_Center: {x: 0.0052142143, y: -0.056802988, z: 0}
-    m_Extent: {x: 3.1495023, y: 2.2750409, z: 0}
+    m_Extent: {x: 3.1495018, y: 2.2750409, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &8246808769050726570
@@ -374,9 +374,10 @@ GameObject:
   - component: {fileID: 1097274496}
   - component: {fileID: 4373786662157399053}
   - component: {fileID: 4065465655866554825}
+  - component: {fileID: 1697374508}
   m_Layer: 0
   m_Name: TomatoNinja
-  m_TagString: Untagged
+  m_TagString: TomatoNinja
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -415,6 +416,10 @@ MonoBehaviour:
   damage: 40
   rotationSpeed: 500
   speed: 0.1
+  pathHolder: {fileID: 1367456566902055687, guid: 7b50ca2fc332b974aa914661e48cc7b5, type: 3}
+  pathPrefab: {fileID: 2469001221352167923, guid: 5fe2f883f25d9ff4a906a338eaebb441, type: 3}
+  follow: {fileID: 1697374508}
+  pc: {fileID: 0}
 --- !u!50 &1097274495
 Rigidbody2D:
   serializedVersion: 4
@@ -5282,3 +5287,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1697374508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8132285748680783459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33aabe1a2dec93349b06e6e5dc51bc06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathCreator: {fileID: 0}
+  endOfPathInstruction: 2
+  speed: 15

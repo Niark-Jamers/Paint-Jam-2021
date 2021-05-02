@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class CharPrefabScript : MonoBehaviour
+public class MonteDescend : MonoBehaviour
 {
     
     public GameObject spriteHolder;
@@ -41,11 +41,9 @@ public class CharPrefabScript : MonoBehaviour
         }
         realSpeed = (goingUp == true) ? speed : -speed;
         timer -= Time.deltaTime;
-        foreach (Transform child in transform)
-        {
-            child.position = new Vector3(child.position.x, child.position.y + realSpeed * Time.deltaTime, child.position.z);
-        }
-        
+
+            transform.position = new Vector3(transform.position.x, transform.position.y + realSpeed * Time.deltaTime, transform.position.z);
+
     }
 
 
@@ -53,6 +51,5 @@ public class CharPrefabScript : MonoBehaviour
     void Update()
     {
         MoveUpDown();
-
     }
 }
