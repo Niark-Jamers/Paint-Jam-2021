@@ -80,20 +80,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Pause();
-        }
+        // if (Input.GetKeyDown(KeyCode.P))
+        // {
+        //     Pause();
+        // }
 
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            LoadNext();
-        }
+        // if (Input.GetKeyDown(KeyCode.N))
+        // {
+        //     LoadNext();
+        // }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Restart();
-        }
+        // if (Input.GetKeyDown(KeyCode.R))
+        // {
+        //     Restart();
+        // }
 
         if (GetLevelTimeBetween01() >= 1.0f)
         {
