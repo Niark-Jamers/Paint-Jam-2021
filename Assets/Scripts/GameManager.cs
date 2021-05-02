@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public float fadeInTime = 1f;
     public Animator fadeOutAnimation;
     public float fadeOutTime = 2f;
+    public Animator fadeInAnimationFailed;
+    public float fadeOutTimeFailed = 2f;
 
     bool levelSucceeded = false;
 
@@ -114,7 +116,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FadeAndLoad(string scene)
     {
-        fadeInAnimation.SetTrigger("Start");
+        if (levelSucceeded)
+            fadeInAnimation.SetTrigger("Start");
+        else
+            fadeInAnimationFailed.SetTrigger("Start");
 
         // Wait animation finish
         float t = Time.time;
