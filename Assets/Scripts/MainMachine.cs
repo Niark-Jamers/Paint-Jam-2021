@@ -36,10 +36,16 @@ public class MainMachine : MonoBehaviour
     public float fireBar = 0;
     public float fireStep = 10;
 
+    public float canProductionTimeout = 0.75f;
+    float lastCanProductionTime;
+
+    bool isInFire, isBroken;
+
     SpriteRenderer sr;
 
     void Start()
     {
+        lastCanProductionTime = Time.time;
         interactionKey.SetActive(false);
         sr = this.GetComponent<SpriteRenderer>();
         character = FindObjectOfType<CharacterController2D>();
@@ -48,6 +54,7 @@ public class MainMachine : MonoBehaviour
 
     public void BrokenStart()
     {
+        isBroken = true;
         currentState = State.Broken;
         sr.color = brokenColor;
         sr.sprite = brokenSprite;
@@ -56,6 +63,7 @@ public class MainMachine : MonoBehaviour
     public void BrokenStop()
     {
         brokenBar = 0;
+        isBroken = false;
         currentState = State.Working;
         interactionKey.SetActive(false);
         sr.color = Color.white;
@@ -64,6 +72,7 @@ public class MainMachine : MonoBehaviour
 
     public void FireStart()
     {
+        isInFire = true;
         currentState = State.Fire;
         firePrefab.SetActive(true);
         sr.color = fireColor;
@@ -71,6 +80,7 @@ public class MainMachine : MonoBehaviour
 
     public void FireStop()
     {
+        isInFire = false;
         fireBar = 0;
         currentState = State.Working;
         interactionKey.SetActive(false);
@@ -161,6 +171,17 @@ public class MainMachine : MonoBehaviour
             FireStart();
         if (brokenBar >= 100)
             BrokenStart();
+        
+        
+        if (!isBroken && !isInFire)
+        {
+            // Produce cans:
+            if (Time.time - lastCanProductionTime > canProductionTimeout)
+            {
+                lastCanProductionTime = Time.time;
+                GameManager.instance.AddCans(1);
+            }
+        }
     }
 
     void CloseGame()

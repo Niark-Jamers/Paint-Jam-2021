@@ -13,7 +13,15 @@ public class GameManager : MonoBehaviour
     int sceneNumber;
 
     public static GameManager instance;
+    
+    [Header("Level settings")]
+    public int canGoal = 30;
+    public Slider canSlider;
+    public float maxTimeInLevel = 60;
 
+    float levelStartTime;
+
+    [Header("Animations")]
     public Animator fadeInAnimation;
     public float fadeInTime = 1f;
     public Animator fadeOutAnimation;
@@ -23,8 +31,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        levelStartTime = Time.time;
+
         curScene = SceneManager.GetActiveScene().name;
         instance = this;
+
+        if (canSlider != null)
+            canSlider.maxValue = canGoal;
 
         for (int i = 0; i < sceneList.Length; i++)
         {
@@ -58,15 +71,29 @@ public class GameManager : MonoBehaviour
         {
             Restart();
         }
+
+        if (GetLevelTimeBetween01() >= 1.0f)
+        {
+            StartCoroutine(RestartLevel());
+
+            IEnumerator RestartLevel()
+            {
+                // TODO: play you loose music
+                yield return new WaitForSeconds(1f);
+
+                yield return FadeAndLoad(sceneList[sceneNumber]);
+            }
+        }
     }
 
     public void LoadNext()
     {
-        Debug.Log(sceneNumber + " | " + fadeInAnimation);
         if (sceneNumber != 0 && fadeInAnimation != null)
         {
             StartCoroutine(FadeAndLoad(sceneList[sceneNumber + 1]));
         }
+        else
+            SceneManager.LoadScene(sceneList[sceneNumber + 1]);
     }
 
     IEnumerator FadeAndLoad(string scene)
@@ -77,7 +104,6 @@ public class GameManager : MonoBehaviour
         float t = Time.time;
         while (Time.time - t < fadeInTime)
             yield return new WaitForEndOfFrame();
-        Debug.Log("NOPE!");
         
         SceneManager.LoadScene(scene);
     }
@@ -93,6 +119,26 @@ public class GameManager : MonoBehaviour
  
         yield break;
     }
+
+    public void AddCans(int amount)
+    {
+        canSlider.value += amount;
+
+        if (canSlider.value == canGoal)
+        {
+            StartCoroutine(FinishLevel());
+
+            IEnumerator FinishLevel()
+            {
+                // TODO: play sound and wait a bit
+                yield return new WaitForSeconds(1);
+
+                yield return FadeAndLoad(sceneList[sceneNumber + 1]);
+            }
+        }
+    }
+
+    public float GetLevelTimeBetween01() => Mathf.Clamp01((Time.time - levelStartTime) / maxTimeInLevel);
 
     public void Restart()
     {
