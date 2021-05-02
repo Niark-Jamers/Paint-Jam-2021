@@ -110,7 +110,7 @@ public class CharacterController2D : MonoBehaviour
         //Debug.Log(speed);
 
         // Jumping
-        bool wantsToJump = !disableInputs && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Z));
+        bool wantsToJump = !disableInputs && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Z));
         if (r2d.velocity.y < 0)
             r2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         else if (r2d.velocity.y > 0 && !wantsToJump)

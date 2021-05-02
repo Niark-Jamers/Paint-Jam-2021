@@ -16,6 +16,6 @@ public class Clock : MonoBehaviour
     {
         float t = GameManager.instance.GetLevelTimeBetween01();
         float r = Mathf.PI * 2 * t;
-        branch.transform.rotation = Quaternion.Euler(0, 0, -Mathf.Rad2Deg * r + 90);
+        branch.transform.rotation = Quaternion.Euler(0, 0, -Mathf.Rad2Deg * r);
     }
 }
