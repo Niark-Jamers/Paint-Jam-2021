@@ -81,7 +81,7 @@ public class VentBrokenGame : MonoBehaviour
 
     private void Update() 
     {
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && currentState == VentState.up)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.UpArrow)) && currentState == VentState.up)
             NextKey();
         else if ((Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.RightArrow)) && currentState == VentState.right)
             NextKey();
