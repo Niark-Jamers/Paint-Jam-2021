@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -12,6 +13,12 @@ public class GameManager : MonoBehaviour
     int sceneNumber;
 
     public static GameManager instance;
+
+    public Animator fadeInAnimation;
+    public float fadeInTime = 1f;
+    public Animator fadeOutAnimation;
+    public float fadeOutTime = 2f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +33,11 @@ public class GameManager : MonoBehaviour
                 sceneNumber = i;
                 break;
             }
+        }
+
+        if (sceneNumber != 0 && fadeOutAnimation != null)
+        {
+            StartCoroutine(FadeAfterLoad());
         }
     }
 
@@ -50,7 +62,36 @@ public class GameManager : MonoBehaviour
 
     public void LoadNext()
     {
-        SceneManager.LoadScene(sceneList[sceneNumber + 1]);
+        Debug.Log(sceneNumber + " | " + fadeInAnimation);
+        if (sceneNumber != 0 && fadeInAnimation != null)
+        {
+            StartCoroutine(FadeAndLoad(sceneList[sceneNumber + 1]));
+        }
+    }
+
+    IEnumerator FadeAndLoad(string scene)
+    {
+        fadeInAnimation.SetTrigger("Start");
+
+        // Wait animation finish
+        float t = Time.time;
+        while (Time.time - t < fadeInTime)
+            yield return new WaitForEndOfFrame();
+        Debug.Log("NOPE!");
+        
+        SceneManager.LoadScene(scene);
+    }
+
+    IEnumerator FadeAfterLoad()
+    {
+        fadeOutAnimation.SetTrigger("Start");
+    
+        // Wait animation finish
+        float t = Time.time;
+        while (Time.time - t < fadeOutTime)
+            yield return new WaitForEndOfFrame();
+ 
+        yield break;
     }
 
     public void Restart()
