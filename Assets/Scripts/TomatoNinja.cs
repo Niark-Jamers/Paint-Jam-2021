@@ -10,7 +10,10 @@ public class TomatoNinja : MonoBehaviour
     public GameObject tomatoBin;
     public Animator ninjanimator;
 
+    public GameObject smokeBomb;
+
     bool death = false;
+    bool smoked = false;
     public ParticleSystem smoke;
     public float damage = 40;
 
@@ -59,13 +62,13 @@ public class TomatoNinja : MonoBehaviour
         ninjanimator.SetTrigger("ninjaSlice");
     }
 
-
-
     void NinjaFuite()
     {
         if (death == true)
             return;
+        smoked = true;
         ninjanimator.SetTrigger("ninjaFuite");
+        smokeBomb.SetActive(true);
     }
 
     public void NinjaSliceOver()
@@ -139,6 +142,8 @@ public class TomatoNinja : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
+            if (smoked == true)
+                return;
             death = true;
             CreatePathToBin();
         }
