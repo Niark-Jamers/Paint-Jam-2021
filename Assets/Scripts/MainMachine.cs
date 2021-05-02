@@ -162,9 +162,12 @@ public class MainMachine : MonoBehaviour
         character.disableInputs = false;
     }
 
+    bool isWorking =>!isBroken && !isInFire && !GameManager.instance.electricityBroken;
+
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, startingPos + Random.insideUnitSphere, shakeStep * Time.deltaTime);
+        if (isWorking)
+            transform.position = Vector3.MoveTowards(transform.position, startingPos + Random.insideUnitSphere, shakeStep * Time.deltaTime);
         trueTimer += Time.deltaTime;
         if (trueTimer >= badtimer)
         {
@@ -180,9 +183,8 @@ public class MainMachine : MonoBehaviour
             FireStart();
         if (brokenBar >= 100)
             BrokenStart();
-        
 
-        if (!isBroken && !isInFire)
+        if (isWorking)
         {
             // Produce cans:
             if (Time.time - lastCanProductionTime > canProductionTimeout)

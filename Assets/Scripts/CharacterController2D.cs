@@ -141,7 +141,7 @@ public class CharacterController2D : MonoBehaviour
         {
             jumpLastTime = Time.time;
             animator.SetTrigger("Jump");
-            AudioManager.instance.PlaySFX(jump, 0.5f);
+            AudioManager.instance.PlaySFX(jump, 0.2f);
             r2d.velocity = new Vector2(r2d.velocity.x, jumpHeight);
         }
 
