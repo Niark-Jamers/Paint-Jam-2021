@@ -10,11 +10,14 @@ public class GameManager : MonoBehaviour
     string curScene;
     bool pause = false;
     int sceneNumber;
-    
+
+    public static GameManager instance;
+
     // Start is called before the first frame update
     void Start()
     {
         curScene = SceneManager.GetActiveScene().name;
+        instance = this;
 
         for (int i = 0; i < sceneList.Length; i++)
         {
@@ -45,12 +48,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void LoadNext()
+    public void LoadNext()
     {
         SceneManager.LoadScene(sceneList[sceneNumber + 1]);
     }
 
-    void Restart()
+    public void Restart()
     {
         SceneManager.LoadScene(curScene);
     }

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Personnage
-  m_Shader: {fileID: 4800000, guid: b7d3e9458589c2948bfb1b7e5c548674, type: 3}
+  m_Name: UI
+  m_Shader: {fileID: 4800000, guid: d33bf50536be4744eb2ce53ea03c5947, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0

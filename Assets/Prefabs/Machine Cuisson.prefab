@@ -149,7 +149,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -584305471
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -6924320141188070186, guid: 2c7a1cd26e231404a9157a55c4d30b9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -529,19 +529,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 454912402092193970, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -209
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 454912402092193971, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_Text
-      value: A/D
+      value: E
       objectReference: {fileID: 0}
     - target: {fileID: 454912402144272269, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 454912402144272269, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 454912402362000961, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_Radius
@@ -559,6 +559,10 @@ PrefabInstance:
       propertyPath: fireBar
       value: 95
       objectReference: {fileID: 0}
+    - target: {fileID: 454912402362000963, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: brokenSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4506464d71dc749b893d3c8e791b02af, type: 3}
     - target: {fileID: 454912402362000963, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: brokenMiniGame
       value: 
@@ -623,9 +627,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2165789823233872350, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2165789823233872350, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.7600002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571846908427876269, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4571846908427876271, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571846908741880941, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9187085872287861629, guid: 91c6a5f2c9222b644bb5b3d3bb227540, type: 3}
       propertyPath: m_RootOrder
