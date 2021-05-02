@@ -490,9 +490,11 @@ MonoBehaviour:
   badtimer: 1
   brokenBar: 0
   brokenStep: 20
+  brokenStepOffset: 10
   fireBar: 0
   fireStep: 5
-  canProductionTimeout: 0.75
+  fireStepOffset: 6
+  canProductionTimeout: 1.5
 --- !u!1 &1199691282493344110
 GameObject:
   m_ObjectHideFlags: 0
