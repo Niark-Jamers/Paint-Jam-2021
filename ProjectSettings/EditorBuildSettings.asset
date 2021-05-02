@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalScenes/Day 0.unity
     guid: d278c83c41abaad45bbb011df24a7dbc
-  - enabled: 1
-    path: Assets/Scenes/FinalScenes/Day 1.unity
-    guid: 9ba508a64d7493e4fb87c77a5c936659
-  - enabled: 1
-    path: Assets/Scenes/FinalScenes/Day 2.unity
-    guid: 338e53d98d63dbb4b8c4843f3eb2d959
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
