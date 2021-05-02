@@ -373,7 +373,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1023496595681045329, guid: 7e4c727f4db6a6442bbea81ec72bb4c7, type: 3}
   m_PrefabInstance: {fileID: 439008729}
   m_PrefabAsset: {fileID: 0}
---- !u!43 &738564117
+--- !u!43 &555155646
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -537,7 +537,7 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &873834550
+--- !u!43 &561763396
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -978,7 +978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fddf2105b6e1656478cacda7ac447bfe, type: 3}
---- !u!43 &1555380370
+--- !u!43 &1596499776
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1201,6 +1201,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Machine Cuisson
       objectReference: {fileID: 0}
+    - target: {fileID: 9076194687094124553, guid: d26474eb724493a489f935f0ece2dd1d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d26474eb724493a489f935f0ece2dd1d, type: 3}
 --- !u!1 &1720070855 stripped
@@ -1218,15 +1222,15 @@ PrefabInstance:
     - target: {fileID: 3197110350674077273, guid: a5aceaa5b18977a4a96bf8f8ecab6fad, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 873834550}
+      objectReference: {fileID: 555155646}
     - target: {fileID: 3274005092212772566, guid: a5aceaa5b18977a4a96bf8f8ecab6fad, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1555380370}
+      objectReference: {fileID: 1596499776}
     - target: {fileID: 4379207208048872491, guid: a5aceaa5b18977a4a96bf8f8ecab6fad, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 738564117}
+      objectReference: {fileID: 561763396}
     - target: {fileID: 8045090882184548458, guid: a5aceaa5b18977a4a96bf8f8ecab6fad, type: 3}
       propertyPath: m_Name
       value: Background
@@ -1284,6 +1288,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7567356983106397297, guid: 214b1682ce6c0fa4d8da99c060ca4a81, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7745858d15a0b9d43b9043d1788ec776, type: 3}
     - target: {fileID: 7567356983106397298, guid: 214b1682ce6c0fa4d8da99c060ca4a81, type: 3}
       propertyPath: m_RootOrder
       value: 7
