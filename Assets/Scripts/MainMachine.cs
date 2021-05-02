@@ -41,7 +41,7 @@ public class MainMachine : MonoBehaviour
     public float shakeStep = 1.0f;
 
 
-    public float canProductionTimeout = 0.75f;
+    public float canProductionTimeout = 1.5f;
     float lastCanProductionTime;
 
     bool isInFire, isBroken;
@@ -180,7 +180,7 @@ public class MainMachine : MonoBehaviour
         if (brokenBar >= 100)
             BrokenStart();
         
-        
+
         if (!isBroken && !isInFire)
         {
             // Produce cans:

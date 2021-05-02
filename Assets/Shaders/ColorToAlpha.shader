@@ -7,7 +7,8 @@ Shader "Custom/ColorToAlpha"
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
 
-        _AdditiveColor ("Additive Color", Color) = (0, 0, 0, 0)
+        _MinLuminance ("Min Luminance", Float) = 0.0
+        _MaxLuminance ("Max Luminance", Float) = 1.0
 
         _ColorToAlpha("Color To Alpha", Color) = (1, 1, 1, 1)
     }
@@ -40,6 +41,8 @@ Shader "Custom/ColorToAlpha"
         fixed4 _Color;
         float4 _ColorToAlpha;
         float4 _AdditiveColor;
+        float _MaxLuminance;
+        float _MinLuminance;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -47,6 +50,10 @@ Shader "Custom/ColorToAlpha"
         UNITY_INSTANCING_BUFFER_START(Props)
             // put more per-instance properties here
         UNITY_INSTANCING_BUFFER_END(Props)
+
+        float3 invLerp(float3 from, float3 to, float3 value) {
+            return (value - from) / (to - from);
+        }
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
@@ -61,7 +68,8 @@ Shader "Custom/ColorToAlpha"
                 o.Alpha = c.a;
 
             o.Albedo *= IN.color;
-            o.Albedo += _AdditiveColor;
+
+            o.Albedo.rgb = invLerp(_MinLuminance, _MaxLuminance, o.Albedo.rgb);
 
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
