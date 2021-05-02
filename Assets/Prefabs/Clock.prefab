@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 7567356983106397300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.116, y: 9.512, z: 0}
-  m_LocalScale: {x: 1.3272642, y: 1.3272642, z: 1.3272642}
+  m_LocalScale: {x: 0.98875874, y: 0.98875874, z: 0.98875874}
   m_Children:
   - {fileID: 7567356982883941768}
   m_Father: {fileID: 0}
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   branch: {fileID: 7567356982883941769}
+  clip: {fileID: 8300000, guid: 7745858d15a0b9d43b9043d1788ec776, type: 3}
 --- !u!1 &7567356984113198340
 GameObject:
   m_ObjectHideFlags: 0

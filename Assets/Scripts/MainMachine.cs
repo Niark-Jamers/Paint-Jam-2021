@@ -44,7 +44,7 @@ public class MainMachine : MonoBehaviour
     public float canProductionTimeout = 1.5f;
     float lastCanProductionTime;
 
-    bool isInFire, isBroken;
+    internal bool isInFire, isBroken;
     Vector3 startingPos;
 
     SpriteRenderer sr;

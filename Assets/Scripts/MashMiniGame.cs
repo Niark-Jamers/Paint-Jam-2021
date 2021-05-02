@@ -12,6 +12,8 @@ public class MashMiniGame : MonoBehaviour
     public MainMachine machine;
     public RectTransform RTSlider;
 
+    public AudioClip mashSound;
+
     float currentMash = 0;
     float lastMash;
 
@@ -34,6 +36,7 @@ public class MashMiniGame : MonoBehaviour
         lastMash = currentMash;
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            AudioManager.instance.PlaySFX(mashSound, 0.3f);
             currentMash += mashStep;
         }
         currentMash -= mashDown * Time.deltaTime;
