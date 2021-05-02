@@ -48,10 +48,11 @@ Shader "Custom/ColorToAlpha"
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             // Albedo comes from a texture tinted by color
-            fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+            float4 cTex = tex2D (_MainTex, IN.uv_MainTex);
+            fixed4 c = cTex * _Color;
             o.Albedo = c.rgb;
 
-            if (all(o.Albedo == _ColorToAlpha.rgb))
+            if (all(cTex.rgb == _ColorToAlpha.rgb))
                 clip(-1);
             else
                 o.Alpha = c.a;
