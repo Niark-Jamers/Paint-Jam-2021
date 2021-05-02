@@ -9,6 +9,7 @@ Shader "Hidden/Custom/Drogue"
         float _RealTime;
         float _Disto;
         float _LSD;
+        float _Kale;
 
         float3 pal( in float t, in float3 a, in float3 b, in float3 c, in float3 d )
         {
@@ -71,6 +72,40 @@ Shader "Hidden/Custom/Drogue"
             return float2x2(cos(theta),-sin(theta), sin(theta), cos(theta));
         }
 
+        #define numPoints 1
+        #define showFolds true 
+
+        // https://www.shadertoy.com/view/XslGz7
+        float rand( float2 n ) {
+            return frac(sin(dot(n.xy, float2(12.9898, 78.233)))* 43758.5453);
+        }
+
+        struct Ray
+        {
+            float2 p;
+            float2 direction;
+        };
+
+        float noise1D2(float2 n) {
+            const float2 d = float2(0.0, 1.0);
+            float2 b = floor(n), f = smoothstep(0.0, 1.0, frac(n));
+            return lerp(lerp(rand(b), rand(b + d.yx), f.x), lerp(rand(b + d.xy), rand(b + d.yy), f.x), f.y);
+        }
+
+        float2 noise2D2(float2 n)
+        {
+            return float2(noise1D2(float2(n.x+0.2, n.y-0.6)), noise1D2(float2(n.y+3., n.x-4.)));
+        }
+
+        Ray GetRay(float i)
+        {
+            float2 position = noise2D2((i*6.12+_RealTime*0.1, i*4.43+_RealTime*0.1));
+            Ray r;
+            r.p = position;
+            r.direction = normalize(noise2D2((i*7.+_RealTime*0.05, i*6.))*2.0-1.0);
+            return r;
+        }
+
         float4 Frag(VaryingsDefault i) : SV_Target
         {
             float4 cameraColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord);
@@ -80,6 +115,40 @@ Shader "Hidden/Custom/Drogue"
             float2 noiseUV = uv * 10;
             float noiseX = fbm(noiseUV) * 2 - 1;
             float noiseY = fbm(noiseUV - 1000) * 2 - 1;
+
+            float2 curPos = uv;
+            
+            for(int i=0;i<numPoints;i++)
+            {
+                Ray ray = GetRay(float(i+1)*3.);	
+                    
+                if(length(ray.p-curPos)<0.01 && showFolds)
+                {
+                    // fragColor.rgb = vec3(1,1,1);
+                    // return;
+                }
+                else if (length(curPos-(ray.p+ray.direction*0.1))<0.01 && showFolds)
+                {
+                    // fragColor.rgb = vec3(1,0,0);
+                    // return;
+                }
+                else
+                {
+                    float offset=dot(curPos-ray.p, ray.direction);
+                    if(abs(offset)<0.001 && showFolds)
+                    {
+                        // fragColor.rgb = vec3(0,0,1);
+                        // return;
+                    }
+                    if(offset<0.)
+                    {
+                        curPos -= ray.direction*offset*2.0;
+                    }									
+                }
+            }
+            if (_Kale > 0)
+                uv = curPos;
+            // float4 kaleColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, curPos);
 
             float2 distortedUVs = uv + float2(noiseX, noiseY) * 0.04 * _Blend;
 
