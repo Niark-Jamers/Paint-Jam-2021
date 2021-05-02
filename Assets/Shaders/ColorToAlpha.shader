@@ -11,9 +11,10 @@ Shader "Custom/ColorToAlpha"
     }
     SubShader
     {
-        Tags {"Queue" = "Transparent" "RenderType"="Transparent" }
+        Tags {"Queue" = "Geometry" "RenderType"="Opaque" }
         Blend Off 
         ZTest Off
+        ZWrite Off
         Cull Off
         LOD 200
 
