@@ -1716,9 +1716,21 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3894017485329612563, guid: bf7bae1d1cc530a46986569b6527bf75, type: 3}
+      propertyPath: sceneList.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3894017485329612563, guid: bf7bae1d1cc530a46986569b6527bf75, type: 3}
       propertyPath: fadeInAnimationFailed
       value: 
       objectReference: {fileID: 545089340}
+    - target: {fileID: 3894017485329612563, guid: bf7bae1d1cc530a46986569b6527bf75, type: 3}
+      propertyPath: sceneList.Array.data[9]
+      value: Day 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3894017485329612563, guid: bf7bae1d1cc530a46986569b6527bf75, type: 3}
+      propertyPath: electricityOutageTimeout
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 5259731989182348949, guid: bf7bae1d1cc530a46986569b6527bf75, type: 3}
       propertyPath: m_RootOrder
       value: 0

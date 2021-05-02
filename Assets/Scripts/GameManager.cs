@@ -145,6 +145,13 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FadeAndLoad(string scene)
     {
+        
+        if (SceneManager.GetActiveScene().name == "Day 8")
+        {
+            GameOverAnimation();
+            yield break;
+        }
+
         AudioManager.instance.StopBackgroundMusic();
         if (levelSucceeded)
             fadeInAnimation.SetTrigger("StartSuccess");
