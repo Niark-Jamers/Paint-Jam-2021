@@ -164,9 +164,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 801056805
+  m_SortingLayer: 2
+  m_SortingOrder: -50
   m_Sprite: {fileID: -8073282620842642878, guid: 5c6a2f32010bd4f68bd49b038ab77164, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 4373786662157399053}
   - component: {fileID: 4065465655866554825}
   m_Layer: 0
-  m_Name: tomatoNinja
+  m_Name: TomatoNinja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5254,9 +5254,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingLayerID: 801056805
+  m_SortingLayer: 2
+  m_SortingOrder: -40
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0

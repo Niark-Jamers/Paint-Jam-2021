@@ -77,7 +77,7 @@ public class TomatoNinja : MonoBehaviour
     }
 
     private void Update() {
-        if (death == true)
+        if (death == true && ninjanimator)
         {
             ninjanimator.SetTrigger("ninjaDeath");
             NinjaSpin();
